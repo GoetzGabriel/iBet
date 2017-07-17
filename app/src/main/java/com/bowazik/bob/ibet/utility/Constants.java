@@ -38,5 +38,5 @@ public class Constants {
     public static final String IBET_TAG_CONTENDER_ID = "contender";
 
     public static final String IBET_STATUS_PENDING = "pending";
-    public static final String IBET_STATUS_ACTIVE = "active";
+    public static final String IBET_STATUS_ACTIVE = "accepted";
 }

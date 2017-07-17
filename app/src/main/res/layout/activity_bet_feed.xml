@@ -22,7 +22,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/pending_bets_text"
-        android:textSize="18sp"/>
+        android:textSize="24sp"
+        android:background="@color/bet_item_desc_bckgrnd" />
 
     <ListView
         android:id="@+id/list_bet_pending"
@@ -35,7 +36,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/active_bets_text"
-        android:textSize="18sp"/>
+        android:textSize="24sp"
+        android:layout_marginTop="@dimen/bet_active_betlist_margin_top"
+        android:background="@color/bet_item_desc_bckgrnd" />
 
     <ListView
         android:id="@+id/list_bet_feed"
