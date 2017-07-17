@@ -79,4 +79,9 @@ public class SignupActivity extends AppCompatActivity implements SignupInterface
     public void showSignupSuccessMessage() {
         Toast.makeText(getBaseContext(), Constants.MESSAGE_SUCCESS_SIGN_UP, Toast.LENGTH_LONG).show();
     }
+
+    @Override
+    public void showErrorMessageServer() {
+        Toast.makeText(getBaseContext(), Constants.MESSAGE_ERROR_SIGN_UP_SERVER, Toast.LENGTH_LONG).show();
+    }
 }

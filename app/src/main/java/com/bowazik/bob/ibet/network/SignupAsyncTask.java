@@ -19,8 +19,8 @@ import java.net.URLEncoder;
 
 public class SignupAsyncTask extends AsyncTask<String, Void, Boolean> {
 
-    private static final String TAG = "LoginAsyncTask";
-    public AsyncInterfaces.LoginAsyncInterface loginAsyncInterface;
+    private static final String TAG = "SignupAsyncTask";
+    public AsyncInterfaces.SignupAsyncInterface signupAsyncInterface;
     private int error = 0;
 
     @Override
@@ -31,7 +31,7 @@ public class SignupAsyncTask extends AsyncTask<String, Void, Boolean> {
     @Override
     protected Boolean doInBackground(String... userData) {
         int responseCode = 0;
-        String url = Constants.IBET_SERVER_PHP_URL_CHECK_USER, serverResponse, data = null, username = userData[0], password = userData[1];
+        String url = Constants.IBET_SERVER_PHP_URL_CREATE_USER, serverResponse, data = null, username = userData[0], password = userData[1];
         HttpURLConnection httpURLConnection = null;
         OutputStreamWriter outputStreamWriter;
         URL server = null;
@@ -39,7 +39,7 @@ public class SignupAsyncTask extends AsyncTask<String, Void, Boolean> {
         try{
             data = URLEncoder.encode("username" , "UTF-8") + "=" + URLEncoder.encode(username, "UTF-8");
             data += "&" + URLEncoder.encode("password" , "UTF-8") + "=" + URLEncoder.encode(password, "UTF-8");
-            Log.v(TAG, "Login Data: "+data);
+            Log.v(TAG, "Signup Data: "+data);
         }catch(UnsupportedEncodingException e){
             e.printStackTrace();
         }
@@ -68,10 +68,6 @@ public class SignupAsyncTask extends AsyncTask<String, Void, Boolean> {
         if(responseCode == HttpURLConnection.HTTP_OK){
             serverResponse = InputStreamInterpreter.interpretInpuStream(httpURLConnection);
             Log.v(TAG, "Response: " + serverResponse);
-            if(!serverResponse.equals("true")){
-                error = 1;
-            }
-
         }else{
             serverResponse = InputStreamInterpreter.interpretInpuStream(httpURLConnection);
             Log.v(TAG, "Response error: " + serverResponse);
@@ -87,9 +83,9 @@ public class SignupAsyncTask extends AsyncTask<String, Void, Boolean> {
 
     protected void onPostExecute(Boolean result){
         if(error == 0){
-            loginAsyncInterface.onLoginSuccess();
+            signupAsyncInterface.onSignupSuccess();
         }else{
-            loginAsyncInterface.onLoginError();
+            signupAsyncInterface.onSignupError();
         }
     }
 }

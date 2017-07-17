@@ -15,6 +15,8 @@ public interface SignupInterfaces {
         void showErrorMessageInvalidInput();
 
         void showSignupSuccessMessage();
+
+        void showErrorMessageServer();
     }
 
     /**

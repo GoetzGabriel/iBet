@@ -41,6 +41,6 @@ public class SignupPresenterImpl implements SignupInterfaces.SignupPresenter, Si
 
     @Override
     public void onSignupError() {
-        signupView.showErrorMessageUsernameTaken();
+        signupView.showErrorMessageServer();
     }
 }

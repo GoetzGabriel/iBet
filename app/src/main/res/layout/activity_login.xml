@@ -59,6 +59,7 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="24dp"
             android:text="@string/link_signup"
+            android:textColor="@color/link"
             android:gravity="center"
             android:textSize="16sp"/>
 

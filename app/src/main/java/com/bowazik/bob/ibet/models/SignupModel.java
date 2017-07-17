@@ -2,6 +2,7 @@ package com.bowazik.bob.ibet.models;
 
 import com.bowazik.bob.ibet.interfaces.SignupInterfaces;
 import com.bowazik.bob.ibet.network.AsyncInterfaces;
+import com.bowazik.bob.ibet.network.SignupAsyncTask;
 
 /**
  * Created by bob on 17.07.17.
@@ -17,12 +18,14 @@ public class SignupModel implements SignupInterfaces.SignupModelOps, AsyncInterf
 
     @Override
     public void createNewAccount(String username, String password) {
-
+        SignupAsyncTask signupAsyncTask = new SignupAsyncTask();
+        signupAsyncTask.signupAsyncInterface = this;
+        signupAsyncTask.execute(username, password);
     }
 
     @Override
     public void onSignupSuccess() {
-
+        signupRequiredPresenterOps.onSignupSuccess();
     }
 
     @Override
@@ -32,6 +35,6 @@ public class SignupModel implements SignupInterfaces.SignupModelOps, AsyncInterf
 
     @Override
     public void onSignupError() {
-
+        signupRequiredPresenterOps.onSignupError();
     }
 }
