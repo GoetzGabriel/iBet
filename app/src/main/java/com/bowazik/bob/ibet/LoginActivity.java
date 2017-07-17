@@ -13,6 +13,7 @@ import com.bowazik.bob.ibet.activities.MenuActivity;
 import com.bowazik.bob.ibet.activities.SignupActivity;
 import com.bowazik.bob.ibet.interfaces.LoginInterfaces;
 import com.bowazik.bob.ibet.presenter.LoginPresenterImpl;
+import com.bowazik.bob.ibet.sharedPrefs.IbetSharedPrefs;
 import com.bowazik.bob.ibet.utility.Constants;
 
 public class LoginActivity extends AppCompatActivity implements LoginInterfaces.LoginView{
@@ -72,8 +73,10 @@ public class LoginActivity extends AppCompatActivity implements LoginInterfaces.
     }
 
     @Override
-    public void showLoginSuccessMessage() {
+    public void showLoginSuccessMessage(int userId) {
         Toast.makeText(getBaseContext(), Constants.MESSAGE_SUCCESS_LOGIN, Toast.LENGTH_LONG).show();
+        IbetSharedPrefs ibetSharedPrefs = new IbetSharedPrefs(this);
+        ibetSharedPrefs.saveUserId(userId);
         startLoginIntent();
     }
 

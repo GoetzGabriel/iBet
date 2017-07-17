@@ -25,6 +25,28 @@ public class IbetSharedPrefs {
         sharedPreferences = context.getSharedPreferences(Constants.SHARED_PREFERENCES_TAG, Context.MODE_PRIVATE);
     }
 
+    /**
+     * Save the user id locally in the shared preferences
+     * @param userId
+     */
+    public void saveUserId(int userId){
+        SharedPreferences.Editor prefsEditor = sharedPreferences.edit();
+        prefsEditor.putInt(Constants.SHARED_PREFERENCES_USER_ID_TAG, userId);
+        prefsEditor.apply();
+    }
+
+    /**
+     * Get the locally saved user id from the shared preferences
+     * @return
+     */
+    public int getUserId(){
+        return sharedPreferences.getInt(Constants.SHARED_PREFERENCES_USER_ID_TAG, 0);
+    }
+
+    /**
+     * Save an ibet locally in the shared preferences
+     * @param ibet
+     */
     public void addIbet(iBet ibet){
         List<iBet> betList = getBetList();
         SharedPreferences.Editor prefsEditor = sharedPreferences.edit();

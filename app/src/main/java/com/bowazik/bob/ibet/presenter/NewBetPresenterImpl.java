@@ -16,28 +16,42 @@ public class NewBetPresenterImpl implements NewBetInterfaces.NewBetPresenter, Ne
     private static final String TAG = "NewBetPresenter";
     private final NewBetInterfaces.NewBetView newBetView;
     private NewBetModel newBetModel;
+    private String titleRegex = "^[a-zA-Z0-9]+$",
+            descRegex = "^[a-zA-Z0-9]+$",
+            contenderRegex = "^[0-9]+$",
+            valueRegex = "^[0-9]+$";
 
     public NewBetPresenterImpl(NewBetInterfaces.NewBetView newBetView, Context context){
         this.newBetView = newBetView;
         this.newBetModel = new NewBetModel(this, context);
     }
 
-    public void doSubmitBet(String contender, String bet){
-        if(contender.equals("") || bet.equals("")){
+    /**
+     * Validate the user data and redirect it to the model if valid
+     * @param title
+     * @param description
+     * @param contender
+     * @param value
+     */
+    public void doSubmitBet(String title, String description, String contender, String value){
+        if(validate(title, description, contender, value)){
+            newBetModel.addNewIBet(title, description, contender, value);
+        }else{
             newBetView.showErrorMessageForContenderBet();
-            return;
         }
+    }
 
-        if(contender.equals(" ") || bet.equals(" ")){
-            newBetView.showErrorMessageForContenderBet();
-            return;
-        }
-        newBetModel.addNewIBet(new iBet(5, 1, 2, "title", bet, 3, 123456d, "pending", "Wettpartner"));
+    private boolean validate(String title, String description, String contender, String value) {
+        return title.matches(titleRegex) && description.matches(descRegex) && contender.matches(contenderRegex) && value.matches(valueRegex);
     }
 
     @Override
-    public void onIbetAdded(iBet iBet) {
-        Log.v(TAG, iBet.getDescription());
+    public void onCreateBetSuccess() {
         newBetView.showSuccessMessageForContenderBet();
+    }
+
+    @Override
+    public void onCreateBetError() {
+        newBetView.showErrorMessageForContenderBet();
     }
 }

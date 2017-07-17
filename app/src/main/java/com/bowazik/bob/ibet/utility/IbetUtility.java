@@ -41,7 +41,7 @@ public class IbetUtility {
                     jsonObject.getString(Constants.IBET_TAG_TITLE),
                     jsonObject.getString(Constants.IBET_TAG_DESCRIPTION),
                     jsonObject.getInt(Constants.IBET_TAG_VALUE),
-                    jsonObject.getDouble(Constants.IBET_TAG_DATE),
+                    //jsonObject.getDouble(Constants.IBET_TAG_DATE),
                     jsonObject.getString(Constants.IBET_TAG_STATUS),
                     jsonObject.getString(Constants.IBET_TAG_CONTENDER_NAME));
         } catch (JSONException e) {

@@ -47,7 +47,7 @@ public class FetchBetListAsyncTask extends AsyncTask<Integer, Void, Boolean> {
         URL server = null;
 
         try{
-            data = URLEncoder.encode("userid" , "UTF-8") + "=" + URLEncoder.encode(String.valueOf(userId), "UTF-8");
+            data = URLEncoder.encode("userId" , "UTF-8") + "=" + URLEncoder.encode(String.valueOf(userId), "UTF-8");
         }catch(UnsupportedEncodingException e){
             e.printStackTrace();
         }
@@ -83,8 +83,9 @@ public class FetchBetListAsyncTask extends AsyncTask<Integer, Void, Boolean> {
                 e.printStackTrace();
             }
 
-            betList = IbetUtility.jsonArrayToIbetList(jsonArray);
-
+            if(jsonArray != null){
+                betList = IbetUtility.jsonArrayToIbetList(jsonArray);
+            }
         }else{
             error = 1;
         }

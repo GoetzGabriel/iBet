@@ -79,9 +79,12 @@ public class BetFeedActivity extends AppCompatActivity implements BetFeedInterfa
     @Override
     public void setBetFeedList(List<iBet> betFeedList) {
         this.betFeedList = betFeedList;
-        Log.v(TAG, "Size: " + betFeedList.size());
-        noBetsTextView.setVisibility(View.INVISIBLE);
-        setupBetFeedList();
+        if(betFeedList.size() > 0){
+            noBetsTextView.setVisibility(View.INVISIBLE);
+            setupBetFeedList();
+        }else{
+            noBetsTextView.setVisibility(View.VISIBLE);
+        }
     }
 
     @Override

@@ -17,7 +17,7 @@ public interface AsyncInterfaces {
     }
 
     interface LoginAsyncInterface{
-        void onLoginSuccess();
+        void onLoginSuccess(int userId);
 
         void onLoginError();
     }
@@ -28,5 +28,11 @@ public interface AsyncInterfaces {
         void onSignupNameTakenError();
 
         void onSignupError();
+    }
+
+    interface CreateBetAsyncInterface{
+        void onCreateBetSuccess();
+
+        void onCreateBetError();
     }
 }

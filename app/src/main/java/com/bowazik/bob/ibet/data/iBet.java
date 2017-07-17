@@ -12,7 +12,7 @@ public class iBet {
     private String title, description, status, contenderName;
     private Double created;
 
-    public iBet(int id, int creator, int contender, String title, String description, int value, Double created, String status, String contenderName){
+    public iBet(int id, int creator, int contender, String title, String description, int value, /*Double created,*/ String status, String contenderName){
 
         this.id = id;
         this.creator = creator;

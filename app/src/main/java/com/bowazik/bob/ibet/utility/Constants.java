@@ -8,11 +8,14 @@ public class Constants {
 
     public static final String SHARED_PREFERENCES_TAG = "com.bowazik.bob.ibet";
     public static final String SHARED_PREFERENCES_BET_LIST_TAG = "betList";
+    public static final String SHARED_PREFERENCES_USER_ID_TAG = "userId";
 
     public static final String IBET_SERVER_PHP_URL_BASE = "https://jayjaywebserver.000webhostapp.com/php/ibet/";
     public static final String IBET_SERVER_PHP_URL_BETS_BY_ID = IBET_SERVER_PHP_URL_BASE + "getbetsbyuserid.php";
     public static final String IBET_SERVER_PHP_URL_CHECK_USER = IBET_SERVER_PHP_URL_BASE + "checkuser.php";
     public static final String IBET_SERVER_PHP_URL_CREATE_USER = IBET_SERVER_PHP_URL_BASE + "adduser.php";
+    public static final String IBET_SERVER_PHP_URL_CREATE_BET = IBET_SERVER_PHP_URL_BASE + "addbet.php";
+
 
     public static final String MESSAGE_SUCCESS_LOGIN = "Login was successful.";
     public static final String MESSAGE_ERROR_LOGIN = "An error occurred. Please try again later.";

@@ -14,7 +14,7 @@ public interface LoginInterfaces {
 
         void showErrorMessageForExceededAttempts();
 
-        void showLoginSuccessMessage();
+        void showLoginSuccessMessage(int userId);
     }
 
     /**
@@ -32,7 +32,7 @@ public interface LoginInterfaces {
      * Presenter operations offered to the model
      */
     interface LoginRequiredPresenterOps{
-        void onLoginSuccess();
+        void onLoginSuccess(int userId);
 
         void onLoginError();
     }

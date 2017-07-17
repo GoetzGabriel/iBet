@@ -14,8 +14,7 @@ import com.bowazik.bob.ibet.utility.Constants;
 
 public class NewBetActivity extends AppCompatActivity implements NewBetInterfaces.NewBetView {
 
-    private EditText editContender;
-    private EditText editBet;
+    private EditText editContender, editTitle, editDescription, editValue;
     private Button btnSubmit;
     private NewBetPresenterImpl newBetPresenterImpl;
 
@@ -29,14 +28,18 @@ public class NewBetActivity extends AppCompatActivity implements NewBetInterface
     }
 
     private void initView() {
+        editTitle = (EditText) findViewById(R.id.input_bet_title);
+        editDescription = (EditText) findViewById(R.id.input_bet_desc);
         editContender = (EditText) findViewById(R.id.input_bet_contender);
-        editBet = (EditText) findViewById(R.id.input_bet_desc);
+        editValue = (EditText) findViewById(R.id.input_bet_value);
         btnSubmit = (Button) findViewById(R.id.btn_submit_bet);
         btnSubmit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                newBetPresenterImpl.doSubmitBet(editContender.getText().toString().trim(),
-                        editBet.getText().toString().trim());
+                newBetPresenterImpl.doSubmitBet(editTitle.getText().toString().trim(),
+                        editDescription.getText().toString().trim(),
+                        editContender.getText().toString().trim(),
+                        editValue.getText().toString().trim());
             }
         });
     }

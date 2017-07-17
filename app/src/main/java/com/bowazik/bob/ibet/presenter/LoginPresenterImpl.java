@@ -33,9 +33,9 @@ public class LoginPresenterImpl implements LoginInterfaces.LoginPresenter, Login
     }
 
     @Override
-    public void onLoginSuccess() {
+    public void onLoginSuccess(int userId) {
         loginAttempt = 0;
-        loginView.showLoginSuccessMessage();
+        loginView.showLoginSuccessMessage(userId);
     }
 
     @Override

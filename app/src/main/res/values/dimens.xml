@@ -7,4 +7,5 @@
     <dimen name="bet_item_desc_margin_side">12px</dimen>
     <dimen name="bet_item_layout_margin">24px</dimen>
     <dimen name="bet_item_desc_padding">6px</dimen>
+    <dimen name="bet_item_layout_margin_bot">12px</dimen>
 </resources>

@@ -17,11 +17,11 @@ import java.net.URLEncoder;
  * Created by bob on 13.07.17.
  */
 
-public class LoginAsyncTask extends AsyncTask<String, Void, Boolean> {
+public class CreateBetAsyncTask extends AsyncTask<String, Void, Boolean> {
 
-    private static final String TAG = "LoginAsyncTask";
-    public AsyncInterfaces.LoginAsyncInterface loginAsyncInterface;
-    private int error = 0, userId = -1;
+    private static final String TAG = "CreateBetAsyncTask";
+    public AsyncInterfaces.CreateBetAsyncInterface createBetAsyncInterface;
+    private int error = 0;
 
     @Override
     protected void onPreExecute(){
@@ -31,15 +31,20 @@ public class LoginAsyncTask extends AsyncTask<String, Void, Boolean> {
     @Override
     protected Boolean doInBackground(String... userData) {
         int responseCode = 0;
-        String url = Constants.IBET_SERVER_PHP_URL_CHECK_USER, serverResponse, data = null, username = userData[0], password = userData[1];
+        String url = Constants.IBET_SERVER_PHP_URL_CREATE_BET, serverResponse,
+                data = null, title = userData[0], description = userData[1],
+                contender = userData[2], value = userData[3], creator = userData[4];
         HttpURLConnection httpURLConnection = null;
         OutputStreamWriter outputStreamWriter;
         URL server = null;
 
         try{
-            data = URLEncoder.encode("username" , "UTF-8") + "=" + URLEncoder.encode(username, "UTF-8");
-            data += "&" + URLEncoder.encode("password" , "UTF-8") + "=" + URLEncoder.encode(password, "UTF-8");
-            Log.v(TAG, "Login Data: "+data);
+            data = URLEncoder.encode("title" , "UTF-8") + "=" + URLEncoder.encode(title, "UTF-8");
+            data += "&" + URLEncoder.encode("description" , "UTF-8") + "=" + URLEncoder.encode(description, "UTF-8");
+            data += "&" + URLEncoder.encode("contender" , "UTF-8") + "=" + URLEncoder.encode(contender, "UTF-8");
+            data += "&" + URLEncoder.encode("value" , "UTF-8") + "=" + URLEncoder.encode(value, "UTF-8");
+            data += "&" + URLEncoder.encode("creator" , "UTF-8") + "=" + URLEncoder.encode(creator, "UTF-8");
+            Log.v(TAG, "New bet Data: "+data);
         }catch(UnsupportedEncodingException e){
             e.printStackTrace();
         }
@@ -68,10 +73,6 @@ public class LoginAsyncTask extends AsyncTask<String, Void, Boolean> {
         if(responseCode == HttpURLConnection.HTTP_OK){
             serverResponse = InputStreamInterpreter.interpretInpuStream(httpURLConnection);
             Log.v(TAG, "Response: " + serverResponse);
-            userId = Integer.parseInt(serverResponse);
-            if(userId == -1){
-                error = 1;
-            }
         }else{
             serverResponse = InputStreamInterpreter.interpretInpuStream(httpURLConnection);
             Log.v(TAG, "Response error: " + serverResponse);
@@ -87,9 +88,9 @@ public class LoginAsyncTask extends AsyncTask<String, Void, Boolean> {
 
     protected void onPostExecute(Boolean result){
         if(error == 0){
-            loginAsyncInterface.onLoginSuccess(userId);
+            createBetAsyncInterface.onCreateBetSuccess();
         }else{
-            loginAsyncInterface.onLoginError();
+            createBetAsyncInterface.onCreateBetError();
         }
     }
 }

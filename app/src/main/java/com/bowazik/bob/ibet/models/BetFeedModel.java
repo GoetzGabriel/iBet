@@ -29,12 +29,9 @@ public class BetFeedModel implements BetFeedInterfaces.BetFeedModelOps, AsyncInt
 
     @Override
     public void fetchBetList() {
-        //Shared prefs bets
-        //betFeedRequiredPresenterOps.onBetListFetched(ibetSharedPrefs.getBetList());
-
         fetchBetListAsyncTask = new FetchBetListAsyncTask();
         fetchBetListAsyncTask.fetchBetListAsyncInterface = this;
-        fetchBetListAsyncTask.execute(1);
+        fetchBetListAsyncTask.execute(ibetSharedPrefs.getUserId());
     }
 
     @Override

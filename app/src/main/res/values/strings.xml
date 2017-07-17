@@ -9,8 +9,8 @@
     <string name="main_menu_running_bets">Running bets</string>
     <string name="main_menu_exit">Exit</string>
     <string name="title_activity_new_bet">NewBetActivity</string>
-    <string name="new_bet_contender_hint">Enter a contender for your bet</string>
-    <string name="new_bet_desc_hint">Enter your bet</string>
+    <string name="new_bet_contender_hint">Contender</string>
+    <string name="new_bet_desc_hint">Description</string>
     <string name="btn_submit_bet">Submit</string>
     <string name="new_bet_info">Place a new bet against a contender</string>
     <string name="empty_feed_message">Currently no active bets.</string>
@@ -21,4 +21,6 @@
     <string name="signup_password_hint">Password</string>
     <string name="btn_signup">Create account</string>
     <string name="link_login">Got an account? Log in</string>
+    <string name="new_bet_title_hint">Title</string>
+    <string name="new_bet_value_hint">Value</string>
 </resources>

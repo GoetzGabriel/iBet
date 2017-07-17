@@ -23,7 +23,7 @@ public interface NewBetInterfaces {
      */
     interface NewBetPresenter{
 
-        void doSubmitBet(String contender, String bet);
+        void doSubmitBet(String title, String description, String contender, String value);
     }
 
     /**
@@ -31,13 +31,15 @@ public interface NewBetInterfaces {
      */
     interface NewBetRequiredPresenterOps{
 
-        void onIbetAdded(iBet iBet);
+        void onCreateBetSuccess();
+
+        void onCreateBetError();
     }
 
     /**
      * Model operations offered to the presenter
      */
     interface NewBetModelOps{
-        void addNewIBet(iBet iBet);
+        void addNewIBet(String title, String description, String contender, String value);
     }
 }
