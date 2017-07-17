@@ -6,9 +6,11 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bowazik.bob.ibet.activities.MenuActivity;
+import com.bowazik.bob.ibet.activities.SignupActivity;
 import com.bowazik.bob.ibet.interfaces.LoginInterfaces;
 import com.bowazik.bob.ibet.presenter.LoginPresenterImpl;
 import com.bowazik.bob.ibet.utility.Constants;
@@ -19,6 +21,7 @@ public class LoginActivity extends AppCompatActivity implements LoginInterfaces.
     private EditText editPassword;
     private Button buttonLogin;
     private LoginPresenterImpl loginPresenterImpl;
+    private TextView signupLink;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,6 +33,7 @@ public class LoginActivity extends AppCompatActivity implements LoginInterfaces.
     }
 
     private void initView() {
+        signupLink = (TextView) findViewById(R.id.link_signup);
         editUserName = (EditText) findViewById(R.id.input_email);
         editPassword = (EditText) findViewById(R.id.input_password);
         buttonLogin = (Button) findViewById(R.id.btn_login);
@@ -40,6 +44,17 @@ public class LoginActivity extends AppCompatActivity implements LoginInterfaces.
                         editPassword.getText().toString().trim());
             }
         });
+        signupLink.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                switchToSignupActivity();
+            }
+        });
+    }
+
+    private void switchToSignupActivity() {
+        Intent signupIntent = new Intent(this, SignupActivity.class);
+        startActivity(signupIntent);
     }
 
     private void initPresenter() {
