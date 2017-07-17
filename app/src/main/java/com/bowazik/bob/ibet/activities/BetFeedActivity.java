@@ -23,14 +23,15 @@ public class BetFeedActivity extends AppCompatActivity implements BetFeedInterfa
 
     private static final String TAG = "BetFeedActivity";
 
-    private ListView betFeedListView;
-    private TextView noBetsTextView;
+    private ListView activeBetListView, pendingBetListView;
+    private TextView noBetsTextView, pendingBetsHint, activeBetsHint;
 
-    private BetFeedAdapter betFeedAdapter;
+    private BetFeedAdapter activeBetFeedAdapter, pendingBetFeedAdapter;
 
     private BetFeedPresenterImpl betFeedPresenterImpl;
 
-    private List<iBet> betFeedList = new ArrayList<>();
+    private List<iBet> pendingBetList = new ArrayList<>();
+    private List<iBet> activeBetList = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,26 +44,43 @@ public class BetFeedActivity extends AppCompatActivity implements BetFeedInterfa
     }
 
     private void setupBetFeedList() {
-        //TODO else fix
-        if (betFeedAdapter == null) {
-            betFeedAdapter = new BetFeedAdapter(this,
+        //Setup the active bet list adapter
+        if (activeBetFeedAdapter == null) {
+            activeBetFeedAdapter = new BetFeedAdapter(this,
                     R.layout.bet_feed_item,
-                    betFeedList);
-            betFeedListView.setAdapter(betFeedAdapter);
-            Log.v(TAG, "neuer adapter");
+                    activeBetList);
+            activeBetListView.setAdapter(activeBetFeedAdapter);
+            Log.v(TAG, "neuer active adapter");
         } else {
-            betFeedAdapter.clear();
-            betFeedAdapter.addAll(betFeedList);
-            betFeedAdapter.notifyDataSetChanged();
-            Log.v(TAG, "size im adapter: "+betFeedList.size());
+            activeBetFeedAdapter.clear();
+            activeBetFeedAdapter.addAll(activeBetList);
+            activeBetFeedAdapter.notifyDataSetChanged();
+            Log.v(TAG, "size im active adapter: "+activeBetList.size());
+        }
+
+        //Setup the pending bet list adapter
+        if (pendingBetFeedAdapter == null) {
+            pendingBetFeedAdapter = new BetFeedAdapter(this,
+                    R.layout.bet_feed_item,
+                    pendingBetList);
+            pendingBetListView.setAdapter(pendingBetFeedAdapter);
+            Log.v(TAG, "neuer pending adapter");
+        } else {
+            pendingBetFeedAdapter.clear();
+            pendingBetFeedAdapter.addAll(pendingBetList);
+            pendingBetFeedAdapter.notifyDataSetChanged();
+            Log.v(TAG, "size im pending adapter: "+pendingBetList.size());
         }
     }
 
     private void initView() {
-        betFeedListView = (ListView) findViewById(R.id.list_bet_feed);
+        activeBetListView = (ListView) findViewById(R.id.list_bet_feed);
+        pendingBetListView =  (ListView) findViewById(R.id.list_bet_pending);
         noBetsTextView = (TextView) findViewById(R.id.no_bets_text);
+        pendingBetsHint = (TextView) findViewById(R.id.pending_bets_text);
+        activeBetsHint = (TextView) findViewById(R.id.active_bets_text);
 
-        betFeedListView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+        activeBetListView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
             public boolean onItemLongClick(AdapterView<?> adapterView, View view, int i, long l) {
                 betFeedPresenterImpl.setBetAsLost(i);
@@ -77,19 +95,22 @@ public class BetFeedActivity extends AppCompatActivity implements BetFeedInterfa
     }
 
     @Override
-    public void setBetFeedList(List<iBet> betFeedList) {
-        this.betFeedList = betFeedList;
-        if(betFeedList.size() > 0){
+    public void setBetFeedList(List<iBet> pendingBetList, List<iBet> activeBetList) {
+        this.activeBetList = activeBetList;
+        this.pendingBetList = pendingBetList;
+        if(activeBetList.size() > 0 || pendingBetList.size() > 0) {
             noBetsTextView.setVisibility(View.INVISIBLE);
             setupBetFeedList();
         }else{
             noBetsTextView.setVisibility(View.VISIBLE);
+            activeBetsHint.setVisibility(View.INVISIBLE);
+            pendingBetsHint.setVisibility(View.INVISIBLE);
         }
     }
 
     @Override
     public void emptyBetFeedList() {
-        this.betFeedList.clear();
+        this.activeBetList.clear();
         noBetsTextView.setVisibility(View.VISIBLE);
         setupBetFeedList();
     }

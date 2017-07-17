@@ -11,7 +11,7 @@ import java.util.List;
 public interface AsyncInterfaces {
 
     interface FetchBetListAsyncInterface{
-        void onFetchBetListSuccess(List<iBet> betList);
+        void onFetchBetListSuccess(List<iBet> pendingBetList, List<iBet> activeBetList);
 
         void onFetchBetListError();
     }

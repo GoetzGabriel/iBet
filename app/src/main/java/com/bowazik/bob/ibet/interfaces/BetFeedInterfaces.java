@@ -15,7 +15,7 @@ public interface BetFeedInterfaces {
      * View operations offered to the presenter
      */
     interface BetFeedView{
-        void setBetFeedList(List<iBet> betFeedList);
+        void setBetFeedList(List<iBet> pendingBetList, List<iBet> activeBetList);
 
         void emptyBetFeedList();
 
@@ -35,7 +35,7 @@ public interface BetFeedInterfaces {
      * Presenter operations offered to the model
      */
     interface BetFeedRequiredPresenterOps{
-        void onBetListFetched(List<iBet> betList);
+        void onBetListFetched(List<iBet> pendingBetList, List<iBet> activeBetList);
     }
 
     /**

@@ -17,18 +17,21 @@ import java.util.List;
 
 public class IbetUtility {
 
-    public static List<iBet> jsonArrayToIbetList(JSONArray jsonArray){
+    public static List<iBet> jsonArrayToIbetList(JSONArray jsonArray, String betStatus){
         List<iBet> betList = new ArrayList<>();
+        iBet iBet;
 
         for(int i = 0; i < jsonArray.length(); i++){
             try {
                 JSONObject jsonObject = jsonArray.getJSONObject(i);
-                betList.add(jsonObjectToIbet(jsonObject));
+                iBet = jsonObjectToIbet(jsonObject);
+                if(betStatus.equals(iBet.getStatus())){
+                    betList.add(iBet);
+                }
             }catch(JSONException e){
                 e.printStackTrace();
             }
         }
-
         return betList;
     }
 

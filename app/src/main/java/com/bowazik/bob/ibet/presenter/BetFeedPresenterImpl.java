@@ -19,7 +19,6 @@ public class BetFeedPresenterImpl implements BetFeedInterfaces.BetFeedPresenter,
     private static final String TAG = "BetFeedPresenterImpl";
     private final BetFeedInterfaces.BetFeedView betFeedView;
     private BetFeedModel betFeedModel;
-    private ArrayList<iBet> betFeedList = new ArrayList<>();
 
     public BetFeedPresenterImpl(BetFeedInterfaces.BetFeedView betFeedView, Context context){
         this.betFeedView = betFeedView;
@@ -27,24 +26,16 @@ public class BetFeedPresenterImpl implements BetFeedInterfaces.BetFeedPresenter,
     }
 
     public void fetchBetFeed() {
-        //TODO replace placeholder data with server interaction(fetch bet list)
         betFeedModel.fetchBetList();
     }
 
+    @Override
     public void setBetAsLost(int i) {
-        if(betFeedList.size() >= i){
-            //TODO replace remove with server interaction(set bet as lost)
-            Log.v(TAG, "Clicked: " + betFeedList.get(i).getContender());
-            betFeedList.remove(i);
-            Log.v(TAG, "Länge: " + betFeedList.size());
-            betFeedView.setBetFeedList(betFeedList);
-        }else{
-            betFeedView.showSetBetAsLostError();
-        }
+
     }
 
     @Override
-    public void onBetListFetched(List<iBet> betList) {
-        betFeedView.setBetFeedList(betList);
+    public void onBetListFetched(List<iBet> pendingBetList, List<iBet> activeBetList) {
+        betFeedView.setBetFeedList(pendingBetList, activeBetList);
     }
 }

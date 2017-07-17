@@ -29,7 +29,8 @@ public class FetchBetListAsyncTask extends AsyncTask<Integer, Void, Boolean> {
 
     private static final String TAG = "FetchBetListAsyncTask";
     public AsyncInterfaces.FetchBetListAsyncInterface fetchBetListAsyncInterface;
-    private List<iBet> betList = new ArrayList<>();
+    private List<iBet> activeBetList = new ArrayList<>();
+    private List<iBet> pendingBetList = new ArrayList<>();
     private int error = 0;
 
     @Override
@@ -84,7 +85,8 @@ public class FetchBetListAsyncTask extends AsyncTask<Integer, Void, Boolean> {
             }
 
             if(jsonArray != null){
-                betList = IbetUtility.jsonArrayToIbetList(jsonArray);
+                pendingBetList = IbetUtility.jsonArrayToIbetList(jsonArray, Constants.IBET_STATUS_PENDING);
+                activeBetList = IbetUtility.jsonArrayToIbetList(jsonArray, Constants.IBET_STATUS_ACTIVE);
             }
         }else{
             error = 1;
@@ -93,13 +95,12 @@ public class FetchBetListAsyncTask extends AsyncTask<Integer, Void, Boolean> {
         if (httpURLConnection != null) {
             httpURLConnection.disconnect();
         }
-
         return true;
     }
 
     protected void onPostExecute(Boolean result){
         if(error == 0){
-            fetchBetListAsyncInterface.onFetchBetListSuccess(betList);
+            fetchBetListAsyncInterface.onFetchBetListSuccess(pendingBetList, activeBetList);
         }else{
             fetchBetListAsyncInterface.onFetchBetListError();
         }

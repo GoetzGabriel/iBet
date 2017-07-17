@@ -35,8 +35,8 @@ public class BetFeedModel implements BetFeedInterfaces.BetFeedModelOps, AsyncInt
     }
 
     @Override
-    public void onFetchBetListSuccess(List<iBet> betList) {
-        betFeedRequiredPresenterOps.onBetListFetched(betList);
+    public void onFetchBetListSuccess(List<iBet> pendingBetList, List<iBet> activeBetList) {
+        betFeedRequiredPresenterOps.onBetListFetched(pendingBetList, activeBetList);
     }
 
     @Override

@@ -23,4 +23,6 @@
     <string name="link_login">Got an account? Log in</string>
     <string name="new_bet_title_hint">Title</string>
     <string name="new_bet_value_hint">Value</string>
+    <string name="active_bets_text">Active bets</string>
+    <string name="pending_bets_text">Pending bets</string>
 </resources>

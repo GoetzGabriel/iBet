@@ -36,4 +36,7 @@ public class Constants {
     public static final String IBET_TAG_DATE = "created";
     public static final String IBET_TAG_STATUS = "status";
     public static final String IBET_TAG_CONTENDER_ID = "contender";
+
+    public static final String IBET_STATUS_PENDING = "pending";
+    public static final String IBET_STATUS_ACTIVE = "active";
 }
