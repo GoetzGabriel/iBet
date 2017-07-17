@@ -1,5 +1,6 @@
 package com.bowazik.bob.ibet.activities;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -56,5 +57,14 @@ public class NewBetActivity extends AppCompatActivity implements NewBetInterface
     @Override
     public void showSuccessMessageForContenderBet() {
         Toast.makeText(getBaseContext(), Constants.MESSAGE_SUCCESS_NEW_BET, Toast.LENGTH_LONG).show();
+        switchToMenuActivity();
+    }
+
+    /**
+     * Switch to the main menu after creating a new bet
+     */
+    private void switchToMenuActivity() {
+        Intent startMenuActivity = new Intent(this, MenuActivity.class);
+        startActivity(startMenuActivity);
     }
 }
