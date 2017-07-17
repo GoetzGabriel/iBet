@@ -17,4 +17,8 @@
     <string name="bet_feed_desc">The running bets are listed here</string>
     <string name="bet_item_contender_desc">Wettpartner:</string>
     <string name="bet_item_stake_desc">Wetteinsatz:</string>
+    <string name="signup_name_hint">Username</string>
+    <string name="signup_password_hint">Password</string>
+    <string name="btn_signup">Create account</string>
+    <string name="link_login">Got an account? Log in</string>
 </resources>

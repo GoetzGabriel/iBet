@@ -18,6 +18,9 @@ public class Constants {
     public static final String MESSAGE_ERROR_NEW_BET = "An error occurred creating the new bet. Pleasy try again later.";
     public static final String MESSAGE_SUCCESS_NEW_BET = "New bet was created successfully.";
     public static final String MESSAGE_ERROR_SET_BET_AS_LOST = "An error occurred seting the bet as lost.";
+    public static final String MESSAGE_ERROR_SIGN_UP_NAME = "Username already taken. Please choose another name.";
+    public static final String MESSAGE_ERROR_SIGN_UP_INPUT = "Input was invalid. Please try another name and password.";
+    public static final String MESSAGE_SUCCESS_SIGN_UP = "Account created successfully.";
 
     public static final String IBET_TAG_ID = "id";
     public static final String IBET_TAG_CREATOR = "creator";

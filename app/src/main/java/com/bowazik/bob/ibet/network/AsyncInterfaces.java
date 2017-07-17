@@ -21,4 +21,12 @@ public interface AsyncInterfaces {
 
         void onLoginError();
     }
+
+    interface SignupAsyncInterface{
+        void onSignupSuccess();
+
+        void onSignupNameTakenError();
+
+        void onSignupError();
+    }
 }
