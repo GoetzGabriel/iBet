@@ -9,4 +9,5 @@
     <dimen name="bet_item_desc_padding">6px</dimen>
     <dimen name="bet_item_layout_margin_bot">12px</dimen>
     <dimen name="bet_active_betlist_margin_top">12sp</dimen>
+    <dimen name="bet_feed_group_padding">6dp</dimen>
 </resources>
