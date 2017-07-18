@@ -64,37 +64,6 @@ public class BetFeedActivity extends AppCompatActivity implements BetFeedInterfa
         listsDataChild = new HashMap<>();
     }
 
-    /*
-    private void setupBetFeedList() {
-        //Setup the active bet list adapter
-        if (activeBetFeedAdapter == null) {
-            activeBetFeedAdapter = new BetFeedAdapter(this,
-                    R.layout.bet_feed_item,
-                    activeBetList);
-            activeBetListView.setAdapter(activeBetFeedAdapter);
-            Log.v(TAG, "neuer active adapter");
-        } else {
-            activeBetFeedAdapter.clear();
-            activeBetFeedAdapter.addAll(activeBetList);
-            activeBetFeedAdapter.notifyDataSetChanged();
-            Log.v(TAG, "size im active adapter: "+activeBetList.size());
-        }
-
-        //Setup the pending bet list adapter
-        if (pendingBetFeedAdapter == null) {
-            pendingBetFeedAdapter = new BetFeedAdapter(this,
-                    R.layout.bet_feed_item,
-                    pendingBetList);
-            pendingBetListView.setAdapter(pendingBetFeedAdapter);
-            Log.v(TAG, "neuer pending adapter");
-        } else {
-            pendingBetFeedAdapter.clear();
-            pendingBetFeedAdapter.addAll(pendingBetList);
-            pendingBetFeedAdapter.notifyDataSetChanged();
-            Log.v(TAG, "size im pending adapter: "+pendingBetList.size());
-        }
-    }*/
-
     /**
      * Refresh the expandable listview adapter for the betfeedview
      */
@@ -115,20 +84,7 @@ public class BetFeedActivity extends AppCompatActivity implements BetFeedInterfa
     }
 
     private void initView() {
-        //activeBetListView = (ListView) findViewById(R.id.list_bet_feed);
-        //pendingBetListView =  (ListView) findViewById(R.id.list_bet_pending);
         noBetsTextView = (TextView) findViewById(R.id.no_bets_text);
-        //pendingBetsHint = (TextView) findViewById(R.id.pending_bets_text);
-        //activeBetsHint = (TextView) findViewById(R.id.active_bets_text);
-/*
-        activeBetListView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
-            @Override
-            public boolean onItemLongClick(AdapterView<?> adapterView, View view, int i, long l) {
-                betFeedPresenterImpl.setBetAsLost(i);
-
-                return true;
-            }
-        });*/
         expandableListView = (ExpandableListView) findViewById(R.id.list_bet_feed);
     }
 
@@ -145,8 +101,6 @@ public class BetFeedActivity extends AppCompatActivity implements BetFeedInterfa
             setupBetFeedList();
         }else{
             noBetsTextView.setVisibility(View.VISIBLE);
-            //activeBetsHint.setVisibility(View.INVISIBLE);
-            //pendingBetsHint.setVisibility(View.INVISIBLE);
         }
     }
 
