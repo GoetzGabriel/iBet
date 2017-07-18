@@ -1,5 +1,6 @@
 package com.bowazik.bob.ibet.activities;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -73,6 +74,22 @@ public class BetFeedActivity extends AppCompatActivity implements BetFeedInterfa
 
         expandableListAdapter = new ExpandableBetFeedAdapter(this, listDataHeader, listsDataChild);
         expandableListView.setAdapter(expandableListAdapter);
+        expandableListView.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
+            @Override
+            public boolean onChildClick(ExpandableListView expandableListView, View view, int groupNumber, int itemNumber, long l) {
+                showBetDetailActivity(groupNumber, itemNumber);
+                return false;
+            }
+        });
+    }
+
+    /**
+     * Switch to the betDetailActivity saving the chosen bet as intent extra
+     */
+    private void showBetDetailActivity(int groupNumber, int itemNuber) {
+        Intent startBetDetailActivity = new Intent(this, BetDetailActivity.class);
+        startBetDetailActivity.putExtra(Constants.IBET_INTENT_BET_TAG, pendingBetList.get(itemNuber));
+        startActivity(startBetDetailActivity);
     }
 
     /**

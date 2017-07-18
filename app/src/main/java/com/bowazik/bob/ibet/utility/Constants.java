@@ -39,4 +39,6 @@ public class Constants {
 
     public static final String IBET_STATUS_PENDING = "pending";
     public static final String IBET_STATUS_ACTIVE = "accepted";
+
+    public static final String IBET_INTENT_BET_TAG = "active_bet";
 }

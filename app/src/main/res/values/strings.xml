@@ -25,4 +25,6 @@
     <string name="new_bet_value_hint">Value</string>
     <string name="active_bets_text">Active bets</string>
     <string name="pending_bets_text">Pending bets</string>
+    <string name="bet_detail_accept_btn">Accept</string>
+    <string name="bet_detail_decline_btn">Decline</string>
 </resources>

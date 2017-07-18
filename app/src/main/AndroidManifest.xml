@@ -20,6 +20,7 @@
         <activity android:name=".activities.MenuActivity" />
         <activity android:name=".activities.NewBetActivity" />
         <activity android:name=".activities.BetFeedActivity" />
+        <activity android:name=".activities.BetDetailActivity" />
     </application>
 
 </manifest>

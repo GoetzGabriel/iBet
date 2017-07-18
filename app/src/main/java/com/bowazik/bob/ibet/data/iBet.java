@@ -1,12 +1,13 @@
 package com.bowazik.bob.ibet.data;
 
+import java.io.Serializable;
 import java.util.Date;
 
 /**
  * Created by bob on 27.06.17.
  */
 
-public class iBet {
+public class iBet implements Serializable{
 
     private int id, creator, contender, value;
     private String title, description, status, contenderName;
