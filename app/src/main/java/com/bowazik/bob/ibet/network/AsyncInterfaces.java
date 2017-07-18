@@ -35,4 +35,10 @@ public interface AsyncInterfaces {
 
         void onCreateBetError();
     }
+
+    interface BetReactionAsyncInterface{
+        void onBetReactionSuccess();
+
+        void onBetReactionError();
+    }
 }

@@ -7,6 +7,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bowazik.bob.ibet.R;
 import com.bowazik.bob.ibet.data.iBet;
@@ -62,13 +63,13 @@ public class BetDetailActivity extends AppCompatActivity implements BetDetailInt
         acceptBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //betDetailPresenter.acceptBet();
+                betDetailPresenter.acceptBet(activeIbet.getId());
             }
         });
         declineBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //betDetailPresenter.declineBet();
+                betDetailPresenter.declineBet(activeIbet.getId());
             }
         });
     }
@@ -79,11 +80,17 @@ public class BetDetailActivity extends AppCompatActivity implements BetDetailInt
 
     @Override
     public void showBetReactionSuccessMessage() {
+        Toast.makeText(this, Constants.MESSAGE_SUCCESS_BET_REACTION, Toast.LENGTH_LONG).show();
+        startBetFeedActivity();
+    }
 
+    private void startBetFeedActivity() {
+        Intent startBetFeedActivity = new Intent(this, BetFeedActivity.class);
+        startActivity(startBetFeedActivity);
     }
 
     @Override
     public void showBetRectionErrorMessage() {
-
+        Toast.makeText(this, Constants.MESSAGE_ERROR_BET_REACTION, Toast.LENGTH_LONG).show();
     }
 }

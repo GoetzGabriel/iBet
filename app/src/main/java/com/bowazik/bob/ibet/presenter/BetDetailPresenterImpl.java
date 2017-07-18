@@ -21,21 +21,21 @@ public class BetDetailPresenterImpl implements BetDetailInterfaces.BetDetailPres
 
     @Override
     public void acceptBet(int betId) {
-
+        betDetailModel.acceptBet(betId);
     }
 
     @Override
     public void declineBet(int betId) {
-
+        betDetailModel.declineBet(betId);
     }
 
     @Override
     public void onBetReactionSuccess() {
-
+        betDetailView.showBetReactionSuccessMessage();
     }
 
     @Override
     public void onBetReactionError() {
-
+        betDetailView.showBetRectionErrorMessage();
     }
 }
