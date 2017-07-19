@@ -20,13 +20,8 @@ public class BetDetailPresenterImpl implements BetDetailInterfaces.BetDetailPres
     }
 
     @Override
-    public void acceptBet(int betId) {
-        betDetailModel.acceptBet(betId);
-    }
-
-    @Override
-    public void declineBet(int betId) {
-        betDetailModel.declineBet(betId);
+    public void reactToBet(int betId, String newStatus) {
+        betDetailModel.reactToBet(betId, newStatus);
     }
 
     @Override

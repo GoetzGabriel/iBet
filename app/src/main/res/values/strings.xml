@@ -27,4 +27,5 @@
     <string name="pending_bets_text">Pending bets</string>
     <string name="bet_detail_accept_btn">Accept</string>
     <string name="bet_detail_decline_btn">Decline</string>
+    <string name="bet_detail_info">Waiting for contender to accept the bet..</string>
 </resources>

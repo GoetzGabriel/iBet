@@ -21,9 +21,7 @@ public interface BetDetailInterfaces {
      */
     interface BetDetailPresenter{
 
-        void acceptBet(int betId);
-
-        void declineBet(int betId);
+        void reactToBet(int betId, String newStatus);
     }
 
     /**
@@ -41,8 +39,6 @@ public interface BetDetailInterfaces {
      */
     interface BetDetailModelOps{
 
-        void acceptBet(int betId);
-
-        void declineBet(int betId);
+        void reactToBet(int betId, String newStatus);
     }
 }

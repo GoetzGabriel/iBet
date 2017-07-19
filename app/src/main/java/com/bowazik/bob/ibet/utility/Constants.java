@@ -46,4 +46,9 @@ public class Constants {
 
     public static final String IBET_BET_REACTION_ACCEPT = "accepted";
     public static final String IBET_BET_REACTION_DECLINED = "declined";
+    public static final String IBET_BET_REACTION_WON = "won";
+    public static final String IBET_BET_REACTION_LOST = "lost";
+
+    public static final String IBET_BTN_SET_LOST = "Set bet as lost";
+    public static final String IBET_BTN_SET_WON = "Set bet as won";
 }

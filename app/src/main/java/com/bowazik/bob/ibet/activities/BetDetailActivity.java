@@ -26,7 +26,7 @@ public class BetDetailActivity extends AppCompatActivity implements BetDetailInt
     private BetDetailPresenterImpl betDetailPresenter;
     private IbetSharedPrefs ibetSharedPrefs;
 
-    private TextView titleTextView, descTextView, contenderTextView, valueTextView;
+    private TextView titleTextView, descTextView, contenderTextView, valueTextView, infoTextView;
     private Button acceptBtn, declineBtn;
 
     private iBet activeIbet;
@@ -68,6 +68,7 @@ public class BetDetailActivity extends AppCompatActivity implements BetDetailInt
         descTextView = (TextView) findViewById(R.id.bet_detail_description);
         contenderTextView = (TextView) findViewById(R.id.bet_detail_contender);
         valueTextView = (TextView) findViewById(R.id.bet_detail_stake);
+        infoTextView = (TextView) findViewById(R.id.bet_detail_info);
 
         //Display the iBet data
         titleTextView.setText(activeIbet.getTitle());
@@ -75,22 +76,41 @@ public class BetDetailActivity extends AppCompatActivity implements BetDetailInt
         contenderTextView.setText(activeIbet.getContenderName());
         valueTextView.setText(Integer.toString(activeIbet.getValue()));
 
-        //Hide the accept and decline buttons if the active bet is either created by the user or already active
-        //otherwise set the button clickListeners
-        if(!pending || created){
+        //Hide the accept and decline buttons if the active bet is created by the user and pending
+        //Hide the waiting for contender info textView change the buttons to set to won and set to lost
+        // and set the according clickListener if the bet is active
+        //Else hide the info textView and set the accept/decline bet clickListener
+        if(pending && created) {
             acceptBtn.setVisibility(View.GONE);
             declineBtn.setVisibility(View.GONE);
-        }else{
+        }else if(!pending ){
+            infoTextView.setVisibility(View.GONE);
+            acceptBtn.setText(Constants.IBET_BTN_SET_WON);
+            declineBtn.setText(Constants.IBET_BTN_SET_LOST);
             acceptBtn.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    betDetailPresenter.acceptBet(activeIbet.getId());
+                    betDetailPresenter.reactToBet(activeIbet.getId(), Constants.IBET_BET_REACTION_WON);
                 }
             });
             declineBtn.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    betDetailPresenter.declineBet(activeIbet.getId());
+                    betDetailPresenter.reactToBet(activeIbet.getId(), Constants.IBET_BET_REACTION_LOST);
+                }
+            });
+        }else{
+            infoTextView.setVisibility(View.GONE);
+            acceptBtn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    betDetailPresenter.reactToBet(activeIbet.getId(), Constants.IBET_BET_REACTION_ACCEPT);
+                }
+            });
+            declineBtn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    betDetailPresenter.reactToBet(activeIbet.getId(), Constants.IBET_BET_REACTION_DECLINED);
                 }
             });
         }

@@ -19,17 +19,10 @@ public class BetDetailModel implements BetDetailInterfaces.BetDetailModelOps, As
     }
 
     @Override
-    public void acceptBet(int betId) {
+    public void reactToBet(int betId, String newStatus) {
         betReactionAsyncTask = new BetReactionAsyncTask();
         betReactionAsyncTask.betReactionAsyncInterface = this;
-        betReactionAsyncTask.execute(Integer.toString(betId), Constants.IBET_BET_REACTION_ACCEPT);
-    }
-
-    @Override
-    public void declineBet(int betId) {
-        betReactionAsyncTask = new BetReactionAsyncTask();
-        betReactionAsyncTask.betReactionAsyncInterface = this;
-        betReactionAsyncTask.execute(Integer.toString(betId), Constants.IBET_BET_REACTION_DECLINED);
+        betReactionAsyncTask.execute(Integer.toString(betId), newStatus);
     }
 
     @Override
