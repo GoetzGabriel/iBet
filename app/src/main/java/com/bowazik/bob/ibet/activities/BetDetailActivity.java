@@ -13,6 +13,7 @@ import com.bowazik.bob.ibet.R;
 import com.bowazik.bob.ibet.data.iBet;
 import com.bowazik.bob.ibet.interfaces.BetDetailInterfaces;
 import com.bowazik.bob.ibet.presenter.BetDetailPresenterImpl;
+import com.bowazik.bob.ibet.sharedPrefs.IbetSharedPrefs;
 import com.bowazik.bob.ibet.utility.Constants;
 
 /**
@@ -23,11 +24,13 @@ public class BetDetailActivity extends AppCompatActivity implements BetDetailInt
 
     private static final String TAG = "BetDetailActivity";
     private BetDetailPresenterImpl betDetailPresenter;
+    private IbetSharedPrefs ibetSharedPrefs;
 
     private TextView titleTextView, descTextView, contenderTextView, valueTextView;
     private Button acceptBtn, declineBtn;
 
     private iBet activeIbet;
+    private Boolean pending, created;
 
     @Override
     protected void onCreate(Bundle savedInstanceState){
@@ -35,8 +38,21 @@ public class BetDetailActivity extends AppCompatActivity implements BetDetailInt
         setContentView(R.layout.activity_bet_detail);
 
         fetchIntentData();
+        setBetFlags();
         initPresenter();
         initView();
+    }
+
+    /**
+     * Set the pending and created flags for the active bet indicating whether the active bet is
+     * pending or active and created from the user created from another user
+     */
+    private void setBetFlags() {
+        //Load the user id from the sharedPrefs
+        ibetSharedPrefs = new IbetSharedPrefs(this);
+
+        pending = (activeIbet.getStatus().equals(Constants.IBET_STATUS_PENDING));
+        created = (activeIbet.getCreator() == ibetSharedPrefs.getUserId());
     }
 
     private void fetchIntentData() {
@@ -59,19 +75,25 @@ public class BetDetailActivity extends AppCompatActivity implements BetDetailInt
         contenderTextView.setText(activeIbet.getContenderName());
         valueTextView.setText(Integer.toString(activeIbet.getValue()));
 
-        //Set the button clickListener
-        acceptBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                betDetailPresenter.acceptBet(activeIbet.getId());
-            }
-        });
-        declineBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                betDetailPresenter.declineBet(activeIbet.getId());
-            }
-        });
+        //Hide the accept and decline buttons if the active bet is either created by the user or already active
+        //otherwise set the button clickListeners
+        if(!pending || created){
+            acceptBtn.setVisibility(View.GONE);
+            declineBtn.setVisibility(View.GONE);
+        }else{
+            acceptBtn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    betDetailPresenter.acceptBet(activeIbet.getId());
+                }
+            });
+            declineBtn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    betDetailPresenter.declineBet(activeIbet.getId());
+                }
+            });
+        }
     }
 
     private void initPresenter() {

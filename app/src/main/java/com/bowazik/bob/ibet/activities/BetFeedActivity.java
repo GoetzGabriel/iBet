@@ -88,7 +88,7 @@ public class BetFeedActivity extends AppCompatActivity implements BetFeedInterfa
      */
     private void showBetDetailActivity(int groupNumber, int itemNuber) {
         Intent startBetDetailActivity = new Intent(this, BetDetailActivity.class);
-        startBetDetailActivity.putExtra(Constants.IBET_INTENT_BET_TAG, pendingBetList.get(itemNuber));
+        startBetDetailActivity.putExtra(Constants.IBET_INTENT_BET_TAG, groupNumber == 0 ? pendingBetList.get(itemNuber) : activeBetList.get(itemNuber));
         startActivity(startBetDetailActivity);
     }
 

@@ -16,7 +16,7 @@ public class NewBetPresenterImpl implements NewBetInterfaces.NewBetPresenter, Ne
     private static final String TAG = "NewBetPresenter";
     private final NewBetInterfaces.NewBetView newBetView;
     private NewBetModel newBetModel;
-    private String titleRegex = "^[a-zA-Z0-9]+$",
+    private String titleRegex = "^[a-zA-Z0-9 ]+$",
             descRegex = "^[a-zA-Z0-9 ]+$",
             contenderRegex = "^[0-9]+$",
             valueRegex = "^[0-9]+$";
