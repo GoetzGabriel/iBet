@@ -6,4 +6,6 @@
 
     <color name="bet_item_desc_bckgrnd">#D3D3D3</color>
     <color name="link">#0645AD</color>
+    <color name="bet_history_element_background_won">#84FF55</color>
+    <color name="bet_history_element_background_lost">#FF5244</color>
 </resources>

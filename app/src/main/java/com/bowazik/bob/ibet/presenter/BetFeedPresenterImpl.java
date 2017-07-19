@@ -30,11 +30,6 @@ public class BetFeedPresenterImpl implements BetFeedInterfaces.BetFeedPresenter,
     }
 
     @Override
-    public void setBetAsLost(int i) {
-
-    }
-
-    @Override
     public void onBetListFetched(List<iBet> pendingBetList, List<iBet> activeBetList) {
         betFeedView.setBetFeedList(pendingBetList, activeBetList);
     }

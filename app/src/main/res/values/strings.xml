@@ -6,7 +6,7 @@
     <string name="login_email_hint">Email</string>
     <string name="login_password_hint">Password</string>
     <string name="main_menu_new_bet">New bet</string>
-    <string name="main_menu_running_bets">Running bets</string>
+    <string name="main_menu_running_bets">Active bets</string>
     <string name="main_menu_exit">Exit</string>
     <string name="title_activity_new_bet">NewBetActivity</string>
     <string name="new_bet_contender_hint">Contender</string>
@@ -28,4 +28,5 @@
     <string name="bet_detail_accept_btn">Accept</string>
     <string name="bet_detail_decline_btn">Decline</string>
     <string name="bet_detail_info">Waiting for contender to accept the bet..</string>
+    <string name="main_menu_btn_history">History</string>
 </resources>

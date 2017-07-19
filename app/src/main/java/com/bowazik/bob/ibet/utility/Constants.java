@@ -16,6 +16,7 @@ public class Constants {
     public static final String IBET_SERVER_PHP_URL_CREATE_USER = IBET_SERVER_PHP_URL_BASE + "adduser.php";
     public static final String IBET_SERVER_PHP_URL_CREATE_BET = IBET_SERVER_PHP_URL_BASE + "addbet.php";
     public static final String IBET_SERVER_PHP_URL_UPDATE_BET_STATUS = IBET_SERVER_PHP_URL_BASE + "updatebetstatus.php";
+    public static final String IBET_SERVER_PHP_URL_HISTORY_BY_ID = IBET_SERVER_PHP_URL_BASE + "getbethistorybyuserid.php";
 
     public static final String MESSAGE_SUCCESS_LOGIN = "Login was successful.";
     public static final String MESSAGE_ERROR_LOGIN = "An error occurred. Please try again later.";
@@ -41,6 +42,8 @@ public class Constants {
 
     public static final String IBET_STATUS_PENDING = "pending";
     public static final String IBET_STATUS_ACTIVE = "accepted";
+    public static final String IBET_STATUS_WON = "won";
+    public static final String IBET_STATUS_LOST = "lost";
 
     public static final String IBET_INTENT_BET_TAG = "active_bet";
 

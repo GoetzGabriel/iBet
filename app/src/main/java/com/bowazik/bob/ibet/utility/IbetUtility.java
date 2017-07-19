@@ -17,7 +17,7 @@ import java.util.List;
 
 public class IbetUtility {
 
-    public static List<iBet> jsonArrayToIbetList(JSONArray jsonArray, String betStatus){
+    public static List<iBet> jsonArrayToIbetList(JSONArray jsonArray, String[] betStatus){
         List<iBet> betList = new ArrayList<>();
         iBet iBet;
 
@@ -25,7 +25,7 @@ public class IbetUtility {
             try {
                 JSONObject jsonObject = jsonArray.getJSONObject(i);
                 iBet = jsonObjectToIbet(jsonObject);
-                if(betStatus.equals(iBet.getStatus())){
+                if(stringArrayContainsString(betStatus, iBet.getStatus())){
                     betList.add(iBet);
                 }
             }catch(JSONException e){
@@ -33,6 +33,16 @@ public class IbetUtility {
             }
         }
         return betList;
+    }
+
+    //Check whether a string array contains a specific string
+    private static Boolean stringArrayContainsString(String[] strings, String string){
+        for(String tempString : strings){
+            if(tempString.equals(string)){
+                return true;
+            }
+        }
+        return false;
     }
 
     private static iBet jsonObjectToIbet(JSONObject jsonObject) {

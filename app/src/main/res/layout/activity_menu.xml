@@ -21,10 +21,18 @@
         android:id="@+id/button_new_bet"
         android:text="@string/main_menu_new_bet"
         android:layout_above="@id/button_running_bets"/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/button_history"
+        android:text="@string/main_menu_btn_history"
+        android:layout_below="@id/button_running_bets"/>
+
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/button_exit"
         android:text="@string/main_menu_exit"
-        android:layout_below="@id/button_running_bets"/>
+        android:layout_below="@id/button_history"/>
 </RelativeLayout>

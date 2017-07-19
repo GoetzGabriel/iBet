@@ -9,7 +9,6 @@ import com.bowazik.bob.ibet.utility.IbetUtility;
 
 import org.json.JSONArray;
 import org.json.JSONException;
-import org.json.JSONObject;
 
 import java.io.IOException;
 import java.io.OutputStreamWriter;
@@ -25,12 +24,11 @@ import java.util.List;
  * Created by bob on 13.07.17.
  */
 
-public class FetchBetListAsyncTask extends AsyncTask<Integer, Void, Boolean> {
+public class FetchBetHistoryAsyncTask extends AsyncTask<Integer, Void, Boolean> {
 
     private static final String TAG = "FetchBetListAsyncTask";
-    public AsyncInterfaces.FetchBetListAsyncInterface fetchBetListAsyncInterface;
-    private List<iBet> activeBetList = new ArrayList<>();
-    private List<iBet> pendingBetList = new ArrayList<>();
+    public AsyncInterfaces.FetchBetHistoryAsyncInterface fetchBetHistoryAsyncInterface;
+    private List<iBet> betHistory = new ArrayList<>();
     private int error = 0;
 
     @Override
@@ -85,10 +83,8 @@ public class FetchBetListAsyncTask extends AsyncTask<Integer, Void, Boolean> {
             }
 
             if(jsonArray != null){
-                String[] requestedStatus = {Constants.IBET_STATUS_PENDING};
-                pendingBetList = IbetUtility.jsonArrayToIbetList(jsonArray, requestedStatus);
-                requestedStatus[0] = Constants.IBET_STATUS_ACTIVE;
-                activeBetList = IbetUtility.jsonArrayToIbetList(jsonArray, requestedStatus);
+                String[] requestedStatus = {Constants.IBET_STATUS_WON, Constants.IBET_STATUS_LOST};
+                betHistory = IbetUtility.jsonArrayToIbetList(jsonArray, requestedStatus);
             }
         }else{
             error = 1;
@@ -102,9 +98,9 @@ public class FetchBetListAsyncTask extends AsyncTask<Integer, Void, Boolean> {
 
     protected void onPostExecute(Boolean result){
         if(error == 0){
-            fetchBetListAsyncInterface.onFetchBetListSuccess(pendingBetList, activeBetList);
+            fetchBetHistoryAsyncInterface.onFetchBetHistorySuccess(betHistory);
         }else{
-            fetchBetListAsyncInterface.onFetchBetListError();
+            fetchBetHistoryAsyncInterface.onFetchBetHistoryError("Hardcoded error. History fetch error.");
         }
     }
 }

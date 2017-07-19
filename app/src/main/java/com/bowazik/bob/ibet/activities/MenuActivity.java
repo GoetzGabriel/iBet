@@ -20,7 +20,7 @@ public class MenuActivity extends AppCompatActivity implements MenuInterfaces.Me
 
     private static final String TAG = "Main Menu";
     private MenuPresenterImpl menuPresenterImpl;
-    private Button buttonNewBet, buttonBetFeed, buttonExit;
+    private Button buttonNewBet, buttonBetFeed, buttonExit, btnHistory;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +35,7 @@ public class MenuActivity extends AppCompatActivity implements MenuInterfaces.Me
         buttonNewBet = (Button) findViewById(R.id.button_new_bet);
         buttonBetFeed = (Button) findViewById(R.id.button_running_bets);
         buttonExit = (Button) findViewById(R.id.button_exit);
+        btnHistory = (Button) findViewById(R.id.button_history);
 
         buttonNewBet.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -54,6 +55,12 @@ public class MenuActivity extends AppCompatActivity implements MenuInterfaces.Me
             @Override
             public void onClick(View view) {
                 menuPresenterImpl.onButtonBetExitClicked();
+            }
+        });
+        btnHistory.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                menuPresenterImpl.onButtonBetHistoryClicked();
             }
         });
     }
@@ -78,6 +85,12 @@ public class MenuActivity extends AppCompatActivity implements MenuInterfaces.Me
     public void startLoginActivity() {
         Intent logOutIntent = new Intent(this, LoginActivity.class);
         startActivity(logOutIntent);
+    }
+
+    @Override
+    public void startHistoryActivity() {
+        Intent historyIntent = new Intent(this, HistoryActivity.class);
+        startActivity(historyIntent);
     }
 
     @Override

@@ -120,16 +120,4 @@ public class BetFeedActivity extends AppCompatActivity implements BetFeedInterfa
             noBetsTextView.setVisibility(View.VISIBLE);
         }
     }
-
-    @Override
-    public void emptyBetFeedList() {
-        this.activeBetList.clear();
-        noBetsTextView.setVisibility(View.VISIBLE);
-        setupBetFeedList();
-    }
-
-    @Override
-    public void showSetBetAsLostError() {
-        Toast.makeText(getBaseContext(), Constants.MESSAGE_ERROR_SET_BET_AS_LOST, Toast.LENGTH_LONG).show();
-    }
 }

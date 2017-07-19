@@ -16,10 +16,6 @@ public interface BetFeedInterfaces {
      */
     interface BetFeedView{
         void setBetFeedList(List<iBet> pendingBetList, List<iBet> activeBetList);
-
-        void emptyBetFeedList();
-
-        void showSetBetAsLostError();
     }
 
     /**
@@ -27,8 +23,6 @@ public interface BetFeedInterfaces {
      */
     interface BetFeedPresenter{
         void fetchBetFeed();
-
-        void setBetAsLost(int i);
     }
 
     /**

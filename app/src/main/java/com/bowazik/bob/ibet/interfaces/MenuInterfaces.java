@@ -13,6 +13,8 @@ public interface MenuInterfaces {
         void exitApp();
 
         void startLoginActivity();
+
+        void startHistoryActivity();
     }
 
     interface MenuPresenter{
@@ -21,6 +23,8 @@ public interface MenuInterfaces {
         void onButtonBetFeedClicked();
 
         void onButtonBetExitClicked();
+
+        void onButtonBetHistoryClicked();
     }
 
 }

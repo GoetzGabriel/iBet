@@ -41,4 +41,10 @@ public interface AsyncInterfaces {
 
         void onBetReactionError();
     }
+
+    interface FetchBetHistoryAsyncInterface{
+        void onFetchBetHistorySuccess(List<iBet> betHistory);
+
+        void onFetchBetHistoryError(String error);
+    }
 }

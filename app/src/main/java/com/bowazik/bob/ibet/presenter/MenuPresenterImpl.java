@@ -25,4 +25,9 @@ public class MenuPresenterImpl implements MenuInterfaces.MenuPresenter{
     public void onButtonBetExitClicked() {
         menuView.startLoginActivity();
     }
+
+    @Override
+    public void onButtonBetHistoryClicked() {
+        menuView.startHistoryActivity();
+    }
 }
