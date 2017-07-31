@@ -17,7 +17,13 @@ import com.bowazik.bob.ibet.sharedPrefs.IbetSharedPrefs;
 import com.bowazik.bob.ibet.utility.Constants;
 
 /**
- * Created by bob on 18.07.17.
+ * The bet detail activity of the app.
+ * Information according the chosen bet is displayed.
+ * The user can react to the bet using different buttons depending on the state of the bet.
+ * If the bet is pending the user can accept or decline it.
+ * If the bet is active the user can tag is as won or lost.
+ * If the reaction succeeded an success message is displayed.
+ * Otherwise an error alert is shown.
  */
 
 public class BetDetailActivity extends AppCompatActivity implements BetDetailInterfaces.BetDetailView {
@@ -55,6 +61,7 @@ public class BetDetailActivity extends AppCompatActivity implements BetDetailInt
         created = (activeIbet.getCreator() == ibetSharedPrefs.getUserId());
     }
 
+    //Get the iBet data to display from the intent
     private void fetchIntentData() {
         Intent startBetDetailAcitivity = getIntent();
         activeIbet = (iBet) startBetDetailAcitivity.getSerializableExtra(Constants.IBET_INTENT_BET_TAG);
@@ -116,21 +123,25 @@ public class BetDetailActivity extends AppCompatActivity implements BetDetailInt
         }
     }
 
+    //Initiate the bet detail presenter
     private void initPresenter() {
         betDetailPresenter = new BetDetailPresenterImpl(this);
     }
 
+    //Show an success message if the reaction to the bet succeeded
     @Override
     public void showBetReactionSuccessMessage() {
         Toast.makeText(this, Constants.MESSAGE_SUCCESS_BET_REACTION, Toast.LENGTH_LONG).show();
         startBetFeedActivity();
     }
 
+    //Use an intent to start the bet feed activity
     private void startBetFeedActivity() {
         Intent startBetFeedActivity = new Intent(this, BetFeedActivity.class);
         startActivity(startBetFeedActivity);
     }
 
+    //Show an error alert if the reaction to the bet did not succeed
     @Override
     public void showBetRectionErrorMessage() {
         Toast.makeText(this, Constants.MESSAGE_ERROR_BET_REACTION, Toast.LENGTH_LONG).show();

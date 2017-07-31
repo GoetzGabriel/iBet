@@ -16,7 +16,12 @@ import com.bowazik.bob.ibet.views.ExpandedListView;
 import java.util.List;
 
 /**
- * Created by bob on 19.07.17.
+ * The bet history activity of the app.
+ * The user can see his won and lost bets in an expandable listview which is separated
+ * in a list of pending and a list of accepted bets.
+ * If the history is empty an info text is shown.
+ * If an list element is clicked the bet detail activity is started and the bet
+ * information and buttons to react to the bet are shown.
  */
 
 public class HistoryActivity extends AppCompatActivity implements HistoryInterfaces.HistoryView {
@@ -44,10 +49,16 @@ public class HistoryActivity extends AppCompatActivity implements HistoryInterfa
         betHistoryListView = (ExpandedListView) findViewById(R.id.list_bet_history);
     }
 
+    //Initiate the history presenter
     private void initPresenter() {
         historyPresenter = new HistoryPresenterImpl(this, this);
     }
 
+    /**
+     * Save the given history list from the web server if it is not empty and hide
+     * the info text.
+     * @param betHistoryList List containing the bet history of the user in iBet format
+     */
     @Override
     public void setHistoryList(List<iBet> betHistoryList) {
         //Hide the no bets in history textView if betHistoryList is no empty
@@ -58,6 +69,8 @@ public class HistoryActivity extends AppCompatActivity implements HistoryInterfa
         setAdapter();
     }
 
+    //Create a expandedlistview adapter for the history list if it does not exist yet
+    //Update it otherwise
     private void setAdapter() {
         //Create a new adapter for the bet history expandedListView if is does not exist yet
         if(betHistoryAdapter == null){
@@ -69,6 +82,7 @@ public class HistoryActivity extends AppCompatActivity implements HistoryInterfa
         }
     }
 
+    //Show an error alert if the history fetch preocess failed
     @Override
     public void showHistoryFetchErrorMessage(String error) {
 

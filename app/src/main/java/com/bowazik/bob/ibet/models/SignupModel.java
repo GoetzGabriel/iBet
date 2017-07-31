@@ -5,7 +5,10 @@ import com.bowazik.bob.ibet.network.AsyncInterfaces;
 import com.bowazik.bob.ibet.network.SignupAsyncTask;
 
 /**
- * Created by bob on 17.07.17.
+ * The Model for the sign up activity.
+ * It sends user data to the web server that validates it.
+ * If the data is valid the server inserts a new account into the DB and
+ * sends a success otherwise it sends an error message.
  */
 
 public class SignupModel implements SignupInterfaces.SignupModelOps, AsyncInterfaces.SignupAsyncInterface {
@@ -16,6 +19,11 @@ public class SignupModel implements SignupInterfaces.SignupModelOps, AsyncInterf
         this.signupRequiredPresenterOps = signupRequiredPresenterOps;
     }
 
+    /**
+     * Send the new account user data to the web server using async task
+     * @param username The new username
+     * @param password The new password
+     */
     @Override
     public void createNewAccount(String username, String password) {
         SignupAsyncTask signupAsyncTask = new SignupAsyncTask();

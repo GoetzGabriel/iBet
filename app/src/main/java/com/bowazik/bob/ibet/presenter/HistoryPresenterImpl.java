@@ -9,7 +9,8 @@ import com.bowazik.bob.ibet.models.HistoryModel;
 import java.util.List;
 
 /**
- * Created by bob on 19.07.17.
+ * The presenter for the bet history activity.
+ * It redirects a request to fetch the bet history to the model and the model response back to the view.
  */
 
 public class HistoryPresenterImpl implements HistoryInterfaces.HistoryPresenter, HistoryInterfaces.HistoryRequiredPresenterOps {
@@ -27,6 +28,10 @@ public class HistoryPresenterImpl implements HistoryInterfaces.HistoryPresenter,
         historyModel.fetchBetHistory();
     }
 
+    /**
+     * Call the presenter callback operation on success and hand the received list
+     * @param betHistoryList List containing the bet history
+     */
     @Override
     public void onBetHistoryFetched(List<iBet> betHistoryList) {
         historyView.setHistoryList(betHistoryList);

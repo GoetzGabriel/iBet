@@ -1,10 +1,14 @@
 package com.bowazik.bob.ibet.interfaces;
 
 /**
- * Created by bob on 08.05.17.
+ * The interfaces for the menu activity/view, presenter and model
  */
+
 public interface MenuInterfaces {
 
+    /**
+     * View operations offered to the presenter
+     */
     interface MenuView{
         void startNewBetActivity();
 
@@ -17,6 +21,9 @@ public interface MenuInterfaces {
         void startHistoryActivity();
     }
 
+    /**
+     * Presenter operations offered to the view
+     */
     interface MenuPresenter{
         void onButtonNewBetClicked();
 

@@ -1,7 +1,7 @@
 package com.bowazik.bob.ibet.interfaces;
 
 /**
- * Created by bob on 08.05.17.
+ * The interfaces for the login activity/view, presenter and model
  */
 
 public interface LoginInterfaces {

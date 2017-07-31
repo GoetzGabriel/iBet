@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by bob on 08.05.17.
+ * The interfaces for the bet feed activity/view, presenter and model
  */
 
 public interface BetFeedInterfaces {

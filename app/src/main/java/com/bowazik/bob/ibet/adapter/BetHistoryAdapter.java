@@ -2,6 +2,7 @@ package com.bowazik.bob.ibet.adapter;
 
 import android.content.Context;
 import android.graphics.Color;
+import android.support.annotation.NonNull;
 import android.support.v4.content.ContextCompat;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,7 +17,8 @@ import com.bowazik.bob.ibet.utility.Constants;
 import java.util.List;
 
 /**
- * Created by bob on 27.06.17.
+ * The custom array adapter for the bet history list.
+ * It gets the list of bets and displays them in a listview.
  */
 
 public class BetHistoryAdapter extends ArrayAdapter<iBet> {
@@ -35,11 +37,8 @@ public class BetHistoryAdapter extends ArrayAdapter<iBet> {
     /**
      * Overriden getView method from the ArrayAdapter.
      * Declares the look of each event feed element.
-     * @param position
-     * @param convertView
-     * @param parent
-     * @return
      */
+    @NonNull
     public View getView(final int position, final View convertView, ViewGroup parent){
 
         View v = convertView;

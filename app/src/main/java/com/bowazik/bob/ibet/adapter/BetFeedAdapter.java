@@ -1,6 +1,7 @@
 package com.bowazik.bob.ibet.adapter;
 
 import android.content.Context;
+import android.support.annotation.NonNull;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,10 +16,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by bob on 27.06.17.
+ * The custom array adapter for the bet feed list.
+ * It gets the list of bets and displays them in a listview.
  */
 
-public class BetFeedAdapter extends ArrayAdapter {
+public class BetFeedAdapter extends ArrayAdapter<iBet> {
 
     private final String TAG = "BetFeedAdapter";
 
@@ -34,11 +36,8 @@ public class BetFeedAdapter extends ArrayAdapter {
     /**
      * Overriden getView method from the ArrayAdapter.
      * Declares the look of each event feed element.
-     * @param position
-     * @param convertView
-     * @param parent
-     * @return
      */
+    @NonNull
     public View getView(final int position, final View convertView, ViewGroup parent){
 
         View v = convertView;

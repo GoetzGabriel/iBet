@@ -13,7 +13,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by bob on 11.07.17.
+ * The Model for the new bet activity.
+ * It sends the users data for a new bet to the web server where a new bet is inserted to the DB.
+ * The presenters callback methods for success and failure are called according to the server response.
  */
 
 public class NewBetModel implements NewBetInterfaces.NewBetModelOps, AsyncInterfaces.CreateBetAsyncInterface{
@@ -27,6 +29,13 @@ public class NewBetModel implements NewBetInterfaces.NewBetModelOps, AsyncInterf
         ibetSharedPrefs = new IbetSharedPrefs(context);
     }
 
+    /**
+     * Send the data of the new bet to the web server using async task
+     * @param title Title of the bet
+     * @param description Description of the bet
+     * @param contender Contender for the bet
+     * @param value Value of the bet
+     */
     public void addNewIBet(String title, String description, String contender, String value){
         CreateBetAsyncTask createBetAsyncTask = new CreateBetAsyncTask();
         createBetAsyncTask.createBetAsyncInterface = this;

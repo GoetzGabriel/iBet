@@ -21,7 +21,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by bob on 13.07.17.
+ * Async task to fetch the bet history from the web server.
+ * If the web server sends a valid response the according model callback operations is called
+ * and the bet list is redirected to the model.
  */
 
 public class FetchBetHistoryAsyncTask extends AsyncTask<Integer, Void, Boolean> {
@@ -41,7 +43,7 @@ public class FetchBetHistoryAsyncTask extends AsyncTask<Integer, Void, Boolean> 
         int userId = ids[0], responseCode = 0;
         String url = Constants.IBET_SERVER_PHP_URL_BETS_BY_ID, serverResponse, data = null;
         HttpURLConnection httpURLConnection = null;
-        OutputStreamWriter outputStreamWriter = null;
+        OutputStreamWriter outputStreamWriter;
         JSONArray jsonArray = null;
         URL server = null;
 

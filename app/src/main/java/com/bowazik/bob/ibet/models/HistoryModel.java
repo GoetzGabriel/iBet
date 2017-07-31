@@ -13,13 +13,14 @@ import com.bowazik.bob.ibet.utility.Constants;
 import java.util.List;
 
 /**
- * Created by bob on 19.07.17.
+ * The Model for the bet detail activity.
+ * It sends a request to react to an iBet to the web server using an async task.
+ * Furthermore it processes the answer and redirects it to the bet detail presenter.
  */
 
 public class HistoryModel implements HistoryInterfaces.HistoryModel, AsyncInterfaces.FetchBetHistoryAsyncInterface {
 
     private HistoryInterfaces.HistoryRequiredPresenterOps historyRequiredPresenterOps;
-    private FetchBetHistoryAsyncTask fetchBetHistoryAsyncTask;
     private IbetSharedPrefs ibetSharedPrefs;
 
     public HistoryModel(HistoryInterfaces.HistoryRequiredPresenterOps historyRequiredPresenterOps, Context context){
@@ -27,13 +28,20 @@ public class HistoryModel implements HistoryInterfaces.HistoryModel, AsyncInterf
         ibetSharedPrefs = new IbetSharedPrefs(context);
     }
 
+    /**
+     * Fetch the bet history from the web server using an async task
+     */
     @Override
     public void fetchBetHistory() {
-        fetchBetHistoryAsyncTask = new FetchBetHistoryAsyncTask();
+        FetchBetHistoryAsyncTask fetchBetHistoryAsyncTask = new FetchBetHistoryAsyncTask();
         fetchBetHistoryAsyncTask.fetchBetHistoryAsyncInterface = this;
         fetchBetHistoryAsyncTask.execute(ibetSharedPrefs.getUserId());
     }
 
+    /**
+     * Redirect the fetched bet history list to the history presenter
+     * @param betHistory Bet history list containing iBets
+     */
     @Override
     public void onFetchBetHistorySuccess(List<iBet> betHistory) {
         historyRequiredPresenterOps.onBetHistoryFetched(betHistory);

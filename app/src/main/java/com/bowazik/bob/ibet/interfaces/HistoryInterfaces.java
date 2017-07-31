@@ -5,7 +5,7 @@ import com.bowazik.bob.ibet.data.iBet;
 import java.util.List;
 
 /**
- * Created by bob on 19.07.17.
+ * The interfaces for the bet history activity/view, presenter and model
  */
 
 public interface HistoryInterfaces {

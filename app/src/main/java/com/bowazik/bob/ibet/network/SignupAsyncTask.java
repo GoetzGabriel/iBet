@@ -14,7 +14,9 @@ import java.net.URL;
 import java.net.URLEncoder;
 
 /**
- * Created by bob on 13.07.17.
+ * Async task to send user data containing a new username and a new password to the web server
+ * where a new account is inserted into the DB.
+ * If the web server sends a valid response the according model callback operations is called.
  */
 
 public class SignupAsyncTask extends AsyncTask<String, Void, Boolean> {

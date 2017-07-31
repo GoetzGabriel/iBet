@@ -16,7 +16,12 @@ import com.bowazik.bob.ibet.presenter.SignupPresenterImpl;
 import com.bowazik.bob.ibet.utility.Constants;
 
 /**
- * Created by bob on 17.07.17.
+ * The sign up activity of the app.
+ * The user can enter an email and a password and create a new account.
+ * The user data is sent to and verified by the web server.
+ * If the entered data is valid a new account is created and a success message is shown.
+ * Otherwise an error alert is shown.
+ * The user can click a hint which redirects to the LoginActivity.
  */
 
 public class SignupActivity extends AppCompatActivity implements SignupInterfaces.SignupView{
@@ -56,30 +61,36 @@ public class SignupActivity extends AppCompatActivity implements SignupInterface
         });
     }
 
+    //Use an intent to start the login activity
     private void switchToLoginActivity() {
         Intent loginIntent = new Intent(this, LoginActivity.class);
         startActivity(loginIntent);
     }
 
+    //Initiate the sign up presenter
     private void initPresenter() {
         signupPresenterImpl = new SignupPresenterImpl(this);
     }
 
+    //Show an error message if the chosen username(email) is already taken
     @Override
     public void showErrorMessageUsernameTaken() {
         Toast.makeText(getBaseContext(), Constants.MESSAGE_ERROR_SIGN_UP_NAME, Toast.LENGTH_LONG).show();
     }
 
+    //Show an error message if the user input was not valid(e.g. empty)
     @Override
     public void showErrorMessageInvalidInput() {
         Toast.makeText(getBaseContext(), Constants.MESSAGE_ERROR_SIGN_UP_INPUT, Toast.LENGTH_LONG).show();
     }
 
+    //Show an success message if the account has been created successfully
     @Override
     public void showSignupSuccessMessage() {
         Toast.makeText(getBaseContext(), Constants.MESSAGE_SUCCESS_SIGN_UP, Toast.LENGTH_LONG).show();
     }
 
+    //Show an error message if an server error occurred
     @Override
     public void showErrorMessageServer() {
         Toast.makeText(getBaseContext(), Constants.MESSAGE_ERROR_SIGN_UP_SERVER, Toast.LENGTH_LONG).show();

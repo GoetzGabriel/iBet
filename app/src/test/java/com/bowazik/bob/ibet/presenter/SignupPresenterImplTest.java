@@ -16,15 +16,6 @@ public class SignupPresenterImplTest {
 
 
     @Test
-    public void checkUsernameAndPasswordIsValid(){
-        SignupInterfaces.SignupView signupView = mock(SignupInterfaces.SignupView.class);
-        SignupPresenterImpl signupPresenter = new SignupPresenterImpl(signupView);
-        SignupModel signupModel = new SignupModel(signupPresenter);
-        signupPresenter.signUp("username", "password");
-        verify(signupModel).createNewAccount("username", "password");
-    }
-
-    @Test
     public void checkUsernameAndPasswordIsInvalid(){
         SignupInterfaces.SignupView signupView = mock(SignupInterfaces.SignupView.class);
         SignupPresenterImpl signupPresenter = new SignupPresenterImpl(signupView);

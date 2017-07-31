@@ -17,7 +17,10 @@ import java.util.List;
 import java.util.Locale;
 
 /**
- * Created by bob on 17.07.17.
+ * The custom array adapter for the expandable bet history list.
+ * It gets the list of bets and displays them in an expandable listview.
+ * Header are the active and pending states of the bets.
+ * Children are the corresponding bets.
  */
 
 public class ExpandableBetFeedAdapter extends BaseExpandableListAdapter {

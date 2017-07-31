@@ -5,15 +5,15 @@ import java.io.IOException;
 import java.net.HttpURLConnection;
 
 /**
- * Created by bob on 13.07.17.
+ *  Class to read an inputStream and return it as a String
  */
 
-public class InputStreamInterpreter {
+class InputStreamInterpreter {
 
     static String interpretInpuStream(HttpURLConnection httpURLConnection){
 
         BufferedReader reader;
-        StringBuffer response = new StringBuffer();
+        StringBuilder response = new StringBuilder();
         String line;
 
         try{

@@ -4,7 +4,8 @@ import java.io.Serializable;
 import java.util.Date;
 
 /**
- * Created by bob on 27.06.17.
+ * The iBet data format in which the iBets are saved.
+ * It is used to retrieve and the bets from the web server and to send it.
  */
 
 public class iBet implements Serializable{

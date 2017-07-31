@@ -14,7 +14,8 @@ import java.net.URL;
 import java.net.URLEncoder;
 
 /**
- * Created by bob on 13.07.17.
+ * Async task to send user data to the web server that validates the data.
+ * If the web server sends a valid response the according model callback operations is called.
  */
 
 public class LoginAsyncTask extends AsyncTask<String, Void, Boolean> {

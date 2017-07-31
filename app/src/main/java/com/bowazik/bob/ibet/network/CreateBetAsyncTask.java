@@ -14,7 +14,8 @@ import java.net.URL;
 import java.net.URLEncoder;
 
 /**
- * Created by bob on 13.07.17.
+ * Async task to send data of a new bet to the web server.
+ * If the web server sends a valid response the according model callback operation is called.
  */
 
 public class CreateBetAsyncTask extends AsyncTask<String, Void, Boolean> {

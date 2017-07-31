@@ -14,7 +14,8 @@ import java.net.URL;
 import java.net.URLEncoder;
 
 /**
- * Created by bob on 19.07.17.
+ * Async task to send a bet reaction request to the web server.
+ * If the web server sends a valid response the according model callback operation is called.
  */
 
 public class BetReactionAsyncTask extends AsyncTask<String, Void, Boolean> {

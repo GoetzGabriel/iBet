@@ -24,6 +24,15 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+/**
+ * The bet feed activity of the app.
+ * The user can see his active bets in an expandable listview which is separated
+ * in a list of pending and a list of accepted bets.
+ * If no active bets exist an info text is shown.
+ * If an list element is clicked the bet detail activity is started and the bet
+ * information and buttons to react to the bet are shown.
+ */
+
 public class BetFeedActivity extends AppCompatActivity implements BetFeedInterfaces.BetFeedView{
 
     private static final String TAG = "BetFeedActivity";
@@ -105,10 +114,17 @@ public class BetFeedActivity extends AppCompatActivity implements BetFeedInterfa
         expandableListView = (ExpandableListView) findViewById(R.id.list_bet_feed);
     }
 
+    //Initiate the bet feed presenter
     private void initPresenter() {
         betFeedPresenterImpl = new BetFeedPresenterImpl(this, this);
     }
 
+    /**
+     * Check whether the received bet lists are empty. If they are show two info texts.
+     * If at least one list is not empty the bet feed list is updated.
+     * @param pendingBetList A list of iBets containing the pending bets received from the web server
+     * @param activeBetList A list of iBets containing the active bets received from the web server
+     */
     @Override
     public void setBetFeedList(List<iBet> pendingBetList, List<iBet> activeBetList) {
         this.activeBetList = activeBetList;

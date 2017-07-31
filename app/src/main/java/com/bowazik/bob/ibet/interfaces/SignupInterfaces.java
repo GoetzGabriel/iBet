@@ -1,7 +1,7 @@
 package com.bowazik.bob.ibet.interfaces;
 
 /**
- * Created by bob on 17.07.17.
+ * The interfaces for the sign up activity/view, presenter and model
  */
 
 public interface SignupInterfaces {

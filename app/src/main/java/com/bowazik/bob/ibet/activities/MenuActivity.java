@@ -13,7 +13,13 @@ import com.bowazik.bob.ibet.interfaces.MenuInterfaces;
 import com.bowazik.bob.ibet.presenter.MenuPresenterImpl;
 
 /**
- * Created by bob on 08.05.17.
+ * The menu activity of the app.
+ * The user can click four different buttons (new bet, active bets, bet history, exit)
+ * that redirect the user to the according activity.
+ * New bet: The user can create a new bet
+ * Active Bets: The user can see his currently active bets
+ * Bet history: The user can see his bet history
+ * Exit: The user can log out
  */
 
 public class MenuActivity extends AppCompatActivity implements MenuInterfaces.MenuView {
@@ -65,28 +71,33 @@ public class MenuActivity extends AppCompatActivity implements MenuInterfaces.Me
         });
     }
 
+    //Initiate the menu presenter
     private void initPresenter() {
         menuPresenterImpl = new MenuPresenterImpl(this);
     }
 
+    //Use an intent to start the new bet activity
     @Override
     public void startNewBetActivity() {
         Intent newBetIntent = new Intent(this, NewBetActivity.class);
         startActivity(newBetIntent);
     }
 
+    //Use an intent to start the bet feed activity
     @Override
     public void startBetFeedActivity() {
         Intent runningBetsIntent = new Intent(this, BetFeedActivity.class);
         startActivity(runningBetsIntent);
     }
 
+    //Use an intent to start the login activity
     @Override
     public void startLoginActivity() {
         Intent logOutIntent = new Intent(this, LoginActivity.class);
         startActivity(logOutIntent);
     }
 
+    //Use an intent to start the bet history activity
     @Override
     public void startHistoryActivity() {
         Intent historyIntent = new Intent(this, HistoryActivity.class);
@@ -98,6 +109,7 @@ public class MenuActivity extends AppCompatActivity implements MenuInterfaces.Me
 
     }
 
+    //Override the onBackPressed method to prevent the app to return to the last activity
     @Override
     public void onBackPressed(){
         Log.v(TAG, "Back button pressed");

@@ -1,7 +1,5 @@
 package com.bowazik.bob.ibet.utility;
 
-import android.util.Log;
-
 import com.bowazik.bob.ibet.data.iBet;
 
 import org.json.JSONArray;
@@ -12,7 +10,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by bob on 13.07.17.
+ * Utility class to retrieve bets with a given status from an jsonArray,
+ * get an Ibet object from an jsonObject,
+ * check whether a String array contains a given String
  */
 
 public class IbetUtility {

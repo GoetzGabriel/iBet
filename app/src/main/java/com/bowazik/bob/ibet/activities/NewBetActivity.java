@@ -13,6 +13,14 @@ import com.bowazik.bob.ibet.interfaces.NewBetInterfaces;
 import com.bowazik.bob.ibet.presenter.NewBetPresenterImpl;
 import com.bowazik.bob.ibet.utility.Constants;
 
+/**
+ * The new bet activity of the app.
+ * The user can create a new bet consisting of a title, a description, a value, and a contender.
+ * The entered data is sent to the web server and validated.
+ * If the entered data is valid a new bet is created and a success message is shown.
+ * Otherwise an error alert is shown.
+ */
+
 public class NewBetActivity extends AppCompatActivity implements NewBetInterfaces.NewBetView {
 
     private EditText editContender, editTitle, editDescription, editValue;
@@ -45,24 +53,25 @@ public class NewBetActivity extends AppCompatActivity implements NewBetInterface
         });
     }
 
+    //Initiate the new bet presenter
     private void initPresenter() {
         newBetPresenterImpl = new NewBetPresenterImpl(this, this);
     }
 
+    //SHow an error message if the bet could not be created successfully
     @Override
     public void showErrorMessageForContenderBet() {
         Toast.makeText(getBaseContext(), Constants.MESSAGE_ERROR_NEW_BET, Toast.LENGTH_LONG).show();
     }
 
+    //Show a success message if the bet has been created successfully
     @Override
     public void showSuccessMessageForContenderBet() {
         Toast.makeText(getBaseContext(), Constants.MESSAGE_SUCCESS_NEW_BET, Toast.LENGTH_LONG).show();
         switchToMenuActivity();
     }
 
-    /**
-     * Switch to the main menu after creating a new bet
-     */
+    //Switch to the main menu after creating a new bet
     private void switchToMenuActivity() {
         Intent startMenuActivity = new Intent(this, MenuActivity.class);
         startActivity(startMenuActivity);

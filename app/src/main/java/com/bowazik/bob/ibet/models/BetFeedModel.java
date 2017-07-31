@@ -13,7 +13,9 @@ import com.bowazik.bob.ibet.utility.Constants;
 import java.util.List;
 
 /**
- * Created by bob on 12.07.17.
+ * The Model for the bet feed activity.
+ * It fetches the list of active and pending bets from the web server.
+ * Furthermore it processes the answer and redirects the bet lists to the presenter.
  */
 
 public class BetFeedModel implements BetFeedInterfaces.BetFeedModelOps, AsyncInterfaces.FetchBetListAsyncInterface{
@@ -21,20 +23,27 @@ public class BetFeedModel implements BetFeedInterfaces.BetFeedModelOps, AsyncInt
     private static final String TAG = "BetFeedModel";
     private BetFeedInterfaces.BetFeedRequiredPresenterOps betFeedRequiredPresenterOps;
     private IbetSharedPrefs ibetSharedPrefs;
-    private FetchBetListAsyncTask fetchBetListAsyncTask;
 
     public BetFeedModel(BetFeedInterfaces.BetFeedRequiredPresenterOps betFeedRequiredPresenterOps, Context context){
         this.betFeedRequiredPresenterOps = betFeedRequiredPresenterOps;
         ibetSharedPrefs = new IbetSharedPrefs(context);
     }
 
+    /**
+     * Fetch the bet lists for the active and the pending bets from the web server using an async task.
+     */
     @Override
     public void fetchBetList() {
-        fetchBetListAsyncTask = new FetchBetListAsyncTask();
+        FetchBetListAsyncTask fetchBetListAsyncTask = new FetchBetListAsyncTask();
         fetchBetListAsyncTask.fetchBetListAsyncInterface = this;
         fetchBetListAsyncTask.execute(ibetSharedPrefs.getUserId());
     }
 
+    /**
+     * Redirect the server answer to the bet feed presenter
+     * @param pendingBetList List of pending bets
+     * @param activeBetList List of active bets
+     */
     @Override
     public void onFetchBetListSuccess(List<iBet> pendingBetList, List<iBet> activeBetList) {
         betFeedRequiredPresenterOps.onBetListFetched(pendingBetList, activeBetList);

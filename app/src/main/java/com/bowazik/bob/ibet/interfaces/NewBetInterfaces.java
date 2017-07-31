@@ -1,9 +1,7 @@
 package com.bowazik.bob.ibet.interfaces;
 
-import com.bowazik.bob.ibet.data.iBet;
-
 /**
- * Created by bob on 22.06.17.
+ * The interfaces for the new bet activity/view, presenter and model
  */
 
 public interface NewBetInterfaces {

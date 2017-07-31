@@ -13,7 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by bob on 12.07.17.
+ * Class containing an implementation of shared preferences to save and retrieve user ids/bets.
  */
 
 public class IbetSharedPrefs {
@@ -27,7 +27,7 @@ public class IbetSharedPrefs {
 
     /**
      * Save the user id locally in the shared preferences
-     * @param userId
+     * @param userId User id to be saved in the shared prefs
      */
     public void saveUserId(int userId){
         SharedPreferences.Editor prefsEditor = sharedPreferences.edit();
@@ -37,7 +37,7 @@ public class IbetSharedPrefs {
 
     /**
      * Get the locally saved user id from the shared preferences
-     * @return
+     * @return User id to be returned
      */
     public int getUserId(){
         return sharedPreferences.getInt(Constants.SHARED_PREFERENCES_USER_ID_TAG, 0);
@@ -45,7 +45,7 @@ public class IbetSharedPrefs {
 
     /**
      * Save an ibet locally in the shared preferences
-     * @param ibet
+     * @param ibet iBet to be saved as json in the prefs
      */
     public void addIbet(iBet ibet){
         List<iBet> betList = getBetList();
@@ -59,6 +59,10 @@ public class IbetSharedPrefs {
         prefsEditor.apply();
     }
 
+    /**
+     * Retrieve the saved bet list as json from the shared prefs
+     * @return List containing the saved bets
+     */
     public List<iBet> getBetList(){
         String json = sharedPreferences.getString(Constants.SHARED_PREFERENCES_BET_LIST_TAG, "");
 

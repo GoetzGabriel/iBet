@@ -5,7 +5,7 @@ import com.bowazik.bob.ibet.data.iBet;
 import java.util.List;
 
 /**
- * Created by bob on 13.07.17.
+ * Interfaces for the custom async task classes
  */
 
 public interface AsyncInterfaces {

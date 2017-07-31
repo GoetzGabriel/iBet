@@ -1,7 +1,7 @@
 package com.bowazik.bob.ibet.interfaces;
 
 /**
- * Created by bob on 18.07.17.
+ * The interfaces for the bet detail activity/view, presenter and model
  */
 
 public interface BetDetailInterfaces {

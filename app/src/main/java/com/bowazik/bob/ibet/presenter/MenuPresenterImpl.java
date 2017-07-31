@@ -3,7 +3,8 @@ package com.bowazik.bob.ibet.presenter;
 import com.bowazik.bob.ibet.interfaces.MenuInterfaces;
 
 /**
- * Created by bob on 08.05.17.
+ * The presenter for the menu activity.
+ * It reacts to view operations.
  */
 
 public class MenuPresenterImpl implements MenuInterfaces.MenuPresenter{

@@ -1,34 +1,63 @@
 package com.bowazik.bob.ibet.presenter;
 
 import com.bowazik.bob.ibet.interfaces.LoginInterfaces;
+import com.bowazik.bob.ibet.models.LoginModel;
 
 import junit.framework.Assert;
 
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+import org.mockito.Mock;
+import org.mockito.MockitoAnnotations;
 
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
 
 /**
  * Created by bob on 08.05.17.
  */
 public class LoginPresenterImplTest {
+
+    @Mock
+    private LoginInterfaces.LoginView loginView;
+
+    private int testUserId = 10;
+    private LoginPresenterImpl loginPresenterImpl;
+
     @Before
     public void setUp() throws Exception {
+        MockitoAnnotations.initMocks(this);
 
+        //Get a reference to the class to test
+        loginPresenterImpl = new LoginPresenterImpl(loginView);
     }
 
-    @After
-    public void tearDown() throws Exception {
+    @Test
+    public void modelLoginSuccess_callsViewOp(){
+        loginPresenterImpl.onLoginSuccess(testUserId);
+        verify(loginView).showLoginSuccessMessage(testUserId);
+    }
 
+    @Test
+    public void modelLoginErrorAttemptNotExcced_callsViewOp(){
+        loginPresenterImpl.onLoginError();
+        verify(loginView).showErrorMessageForUsernamePassword();
+    }
+
+    @Test
+    public void modelLoginErrorAttemptExceed_callsViewOp(){
+        Assert.assertEquals(1, loginPresenterImpl.incrementLoginAttempts());
+        Assert.assertEquals(2, loginPresenterImpl.incrementLoginAttempts());
+        Assert.assertEquals(3, loginPresenterImpl.incrementLoginAttempts());
+        Assert.assertEquals(4, loginPresenterImpl.incrementLoginAttempts());
+        loginPresenterImpl.onLoginError();
+        verify(loginView).showErrorMessageForExceededAttempts();
     }
 
     @Test
     public void checkLoginAttemptExceeded(){
-        LoginInterfaces.LoginView loginView = mock(LoginInterfaces.LoginView.class);
-        LoginPresenterImpl loginPresenterImpl = new LoginPresenterImpl(loginView);
         Assert.assertEquals(1, loginPresenterImpl.incrementLoginAttempts());
         Assert.assertEquals(2, loginPresenterImpl.incrementLoginAttempts());
         Assert.assertEquals(3, loginPresenterImpl.incrementLoginAttempts());
@@ -37,26 +66,14 @@ public class LoginPresenterImplTest {
 
     @Test
     public void checkLoginAttemptNotExceeded(){
-        LoginInterfaces.LoginView loginView = mock(LoginInterfaces.LoginView.class);
-        LoginPresenterImpl loginPresenterImpl = new LoginPresenterImpl(loginView);
+        loginPresenterImpl = new LoginPresenterImpl(loginView);
         Assert.assertEquals(1, loginPresenterImpl.incrementLoginAttempts());
         Assert.assertFalse(loginPresenterImpl.isLoginAttemptExceeded());
     }
 
-    @Test
-    public void checkUsernameAndPasswordIsCorrect(){
-        LoginInterfaces.LoginView loginView = mock(LoginInterfaces.LoginView.class);
-        LoginPresenterImpl loginPresenterImpl = new LoginPresenterImpl(loginView);
-        loginPresenterImpl.doLogin("u", "p");
-        verify(loginView).showLoginSuccessMessage();
-    }
+    @After
+    public void tearDown() throws Exception {
 
-    @Test
-    public void checkUsernameAndPasswordIsNotCorrect(){
-        LoginInterfaces.LoginView loginView = mock(LoginInterfaces.LoginView.class);
-        LoginPresenterImpl loginPresenterImpl = new LoginPresenterImpl(loginView);
-        loginPresenterImpl.doLogin("wrongUn", "wrongPw");
-        verify(loginView).showErrorMessageForUsernamePassword();
     }
 
 }
