@@ -17,6 +17,8 @@ public interface HistoryInterfaces {
         void setHistoryList(List<iBet> betHistoryList);
 
         void showHistoryFetchErrorMessage(String error);
+
+        void setBetBalance(int betBalance);
     }
 
     /**

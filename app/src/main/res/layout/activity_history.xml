@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/activity_main"
     android:layout_width="match_parent"
@@ -18,13 +18,25 @@
         android:text="@string/empty_feed_message"
         android:textSize="18sp"/>
 
+    <!-- Bet balance label -->
+    <TextView
+        android:id="@+id/history_bet_balance"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:textStyle="bold"
+        android:layout_marginTop="6dp"
+        android:padding="6dp"
+        android:minHeight="24dp"/>
+
     <com.bowazik.bob.ibet.views.ExpandedListView
         android:id="@+id/list_bet_history"
         android:layout_height="match_parent"
         android:layout_width="match_parent"
+        android:layout_above="@id/history_bet_balance"
         android:groupIndicator="@android:color/transparent"
         android:descendantFocusability="blocksDescendants"
         android:divider="#C0C0C0"
         android:dividerHeight="1dp"></com.bowazik.bob.ibet.views.ExpandedListView>
 
-</LinearLayout>
+</RelativeLayout>

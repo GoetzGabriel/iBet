@@ -63,4 +63,6 @@ public class Constants {
 
     public static final String BET_FEED_HEADER_PENDING = "Pending bets";
     public static final String BET_FEED_HEADER_ACTIVE = "Active bets";
+    public static final String BET_BALANCE_TEXT = "Bet balance: ";
+    public static final int BET_BALANCE_MIN_SUCCESS_VALUE = 0;
 }

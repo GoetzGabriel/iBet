@@ -11,6 +11,7 @@ import com.bowazik.bob.ibet.adapter.BetHistoryAdapter;
 import com.bowazik.bob.ibet.data.iBet;
 import com.bowazik.bob.ibet.interfaces.HistoryInterfaces;
 import com.bowazik.bob.ibet.presenter.HistoryPresenterImpl;
+import com.bowazik.bob.ibet.utility.Constants;
 import com.bowazik.bob.ibet.views.ExpandedListView;
 
 import java.util.List;
@@ -29,7 +30,7 @@ public class HistoryActivity extends AppCompatActivity implements HistoryInterfa
     private static final String TAG = "HistoryActivity";
     private HistoryInterfaces.HistoryPresenter historyPresenter;
 
-    private TextView noBetsTextView;
+    private TextView noBetsTextView, betBalanceTextView;
     private ExpandedListView betHistoryListView;
     private BetHistoryAdapter betHistoryAdapter;
     private List<iBet> betHistoryList;
@@ -46,6 +47,7 @@ public class HistoryActivity extends AppCompatActivity implements HistoryInterfa
 
     private void initView() {
         noBetsTextView = (TextView) findViewById(R.id.no_history_text);
+        betBalanceTextView = (TextView) findViewById(R.id.history_bet_balance);
         betHistoryListView = (ExpandedListView) findViewById(R.id.list_bet_history);
     }
 
@@ -86,5 +88,16 @@ public class HistoryActivity extends AppCompatActivity implements HistoryInterfa
     @Override
     public void showHistoryFetchErrorMessage(String error) {
 
+    }
+
+    /**
+     * Set the bet balance value according to the received bet history
+     * @param betBalance Value (bets won - bets lost)
+     */
+    @Override
+    public void setBetBalance(int betBalance) {
+        String balanceText = Constants.BET_BALANCE_TEXT + betBalance;
+        betBalanceTextView.setText(balanceText);
+        betBalanceTextView.setBackgroundResource((betBalance < Constants.BET_BALANCE_MIN_SUCCESS_VALUE) ? R.drawable.border_lost : R.drawable.border_won);
     }
 }
