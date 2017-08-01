@@ -19,11 +19,9 @@ public class HistoryPresenterImpl implements HistoryInterfaces.HistoryPresenter,
 
     private HistoryInterfaces.HistoryView historyView;
     private HistoryModel historyModel;
-    private Context context;
 
     public HistoryPresenterImpl(HistoryInterfaces.HistoryView historyView, Context context){
         this.historyView = historyView;
-        this.context = context;
 
         historyModel = new HistoryModel(this, context);
     }
@@ -36,21 +34,21 @@ public class HistoryPresenterImpl implements HistoryInterfaces.HistoryPresenter,
     /**
      * Call the presenter callback operation on success and hand the received list
      * @param betHistoryList List containing the bet history
+     * @param userId Id of the active user
      */
     @Override
-    public void onBetHistoryFetched(List<iBet> betHistoryList) {
+    public void onBetHistoryFetched(List<iBet> betHistoryList, int userId) {
         historyView.setHistoryList(betHistoryList);
 
-        calculateBetBalance(betHistoryList);
+        calculateBetBalance(betHistoryList, userId);
     }
 
     /**
      * Calculate the bet balance depending on the bets in the betHistoryList
      * @param betHistoryList The list of bets in the bet history
      */
-    private void calculateBetBalance(List<iBet> betHistoryList) {
-        IbetSharedPrefs ibetSharedPrefs = new IbetSharedPrefs(context);
-        int betBalance = 0, userId = ibetSharedPrefs.getUserId();
+    private void calculateBetBalance(List<iBet> betHistoryList, int userId) {
+        int betBalance = 0;
 
         //Check every bet in the bet history whether it was won or lost by the creator
         //and add or subtract the bet value accordingly to the bet balance

@@ -22,10 +22,12 @@ public class HistoryModel implements HistoryInterfaces.HistoryModel, AsyncInterf
 
     private HistoryInterfaces.HistoryRequiredPresenterOps historyRequiredPresenterOps;
     private IbetSharedPrefs ibetSharedPrefs;
+    private int userId;
 
     public HistoryModel(HistoryInterfaces.HistoryRequiredPresenterOps historyRequiredPresenterOps, Context context){
         this.historyRequiredPresenterOps = historyRequiredPresenterOps;
         ibetSharedPrefs = new IbetSharedPrefs(context);
+        userId = ibetSharedPrefs.getUserId();
     }
 
     /**
@@ -35,7 +37,7 @@ public class HistoryModel implements HistoryInterfaces.HistoryModel, AsyncInterf
     public void fetchBetHistory() {
         FetchBetHistoryAsyncTask fetchBetHistoryAsyncTask = new FetchBetHistoryAsyncTask();
         fetchBetHistoryAsyncTask.fetchBetHistoryAsyncInterface = this;
-        fetchBetHistoryAsyncTask.execute(ibetSharedPrefs.getUserId());
+        fetchBetHistoryAsyncTask.execute(userId);
     }
 
     /**
@@ -44,7 +46,7 @@ public class HistoryModel implements HistoryInterfaces.HistoryModel, AsyncInterf
      */
     @Override
     public void onFetchBetHistorySuccess(List<iBet> betHistory) {
-        historyRequiredPresenterOps.onBetHistoryFetched(betHistory);
+        historyRequiredPresenterOps.onBetHistoryFetched(betHistory, userId);
     }
 
     @Override

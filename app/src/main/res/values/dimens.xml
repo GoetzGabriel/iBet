@@ -13,4 +13,5 @@
     <dimen name="bet_detail_button_margin">12dp</dimen>
     <dimen name="text_view_font_size">18sp</dimen>
     <dimen name="bet_feed_item_title_font_size">17sp</dimen>
+    <dimen name="border_history_width">3dp</dimen>
 </resources>

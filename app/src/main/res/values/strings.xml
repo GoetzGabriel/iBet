@@ -15,8 +15,8 @@
     <string name="new_bet_info">Create a new bet</string>
     <string name="empty_feed_message">Currently no active bets.</string>
     <string name="bet_feed_desc">The running bets are listed here</string>
-    <string name="bet_item_contender_desc">Wettpartner:</string>
-    <string name="bet_item_stake_desc">Wetteinsatz:</string>
+    <string name="bet_item_contender_desc">Contender:</string>
+    <string name="bet_item_stake_desc">Value:</string>
     <string name="signup_name_hint">Username</string>
     <string name="signup_password_hint">Password</string>
     <string name="btn_signup">Create account</string>

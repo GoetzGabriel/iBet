@@ -32,7 +32,7 @@ public interface HistoryInterfaces {
      * Presenter operations offered to the model
      */
     interface HistoryRequiredPresenterOps{
-        void onBetHistoryFetched(List<iBet> betHistoryList);
+        void onBetHistoryFetched(List<iBet> betHistoryList, int userId);
 
         void onBetHistoryFetchError(String error);
     }
