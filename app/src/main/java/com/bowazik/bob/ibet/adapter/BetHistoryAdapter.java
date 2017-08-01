@@ -2,6 +2,9 @@ package com.bowazik.bob.ibet.adapter;
 
 import android.content.Context;
 import android.graphics.Color;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.GradientDrawable;
+import android.os.Build;
 import android.support.annotation.NonNull;
 import android.support.v4.content.ContextCompat;
 import android.view.LayoutInflater;
@@ -50,10 +53,21 @@ public class BetHistoryAdapter extends ArrayAdapter<iBet> {
 
         iBet i = bets.get(position);
 
-        if(i.getStatus().equals(Constants.IBET_STATUS_WON)){
-            v.setBackgroundColor(ContextCompat.getColor(context,R.color.bet_history_element_background_won));
-        }else{
-            v.setBackgroundColor(ContextCompat.getColor(context,R.color.bet_history_element_background_lost));
+
+        //If API lvl is > 15 set the border color to won/lost
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+            if (i.getStatus().equals(Constants.IBET_STATUS_WON)) {
+                v.setBackgroundResource(R.drawable.border_won);
+            } else {
+                v.setBackgroundResource(R.drawable.border_lost);
+            }
+        }else {
+            //If API lvl is < 16 set background color of view item to won/lost
+            if (i.getStatus().equals(Constants.IBET_STATUS_WON)) {
+                v.setBackgroundColor(ContextCompat.getColor(context, R.color.bet_history_element_background_won));
+            } else {
+                v.setBackgroundColor(ContextCompat.getColor(context, R.color.bet_history_element_background_lost));
+            }
         }
 
         if (i != null) {

@@ -60,4 +60,7 @@ public class Constants {
     public static final String REGEX_NEW_BET_CONTENDER = "^[0-9]+$";
     public static final String REGEX_NEW_BET_VALUE = "^[0-9]+$";
     public static final String REGEX_SIGN_UP = "^[a-zA-Z0-9]+$";
+
+    public static final String BET_FEED_HEADER_PENDING = "Pending bets";
+    public static final String BET_FEED_HEADER_ACTIVE = "Active bets";
 }

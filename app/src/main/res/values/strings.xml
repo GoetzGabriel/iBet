@@ -12,7 +12,7 @@
     <string name="new_bet_contender_hint">Contender</string>
     <string name="new_bet_desc_hint">Description</string>
     <string name="btn_submit_bet">Submit</string>
-    <string name="new_bet_info">Place a new bet against a contender</string>
+    <string name="new_bet_info">Create a new bet</string>
     <string name="empty_feed_message">Currently no active bets.</string>
     <string name="bet_feed_desc">The running bets are listed here</string>
     <string name="bet_item_contender_desc">Wettpartner:</string>
@@ -29,4 +29,5 @@
     <string name="bet_detail_decline_btn">Decline</string>
     <string name="bet_detail_info">Waiting for contender to accept the bet..</string>
     <string name="main_menu_btn_history">History</string>
+    <string name="login_username_hint">Username</string>
 </resources>

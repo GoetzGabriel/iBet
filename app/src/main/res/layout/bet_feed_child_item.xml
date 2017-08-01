@@ -4,16 +4,19 @@
     android:layout_height="wrap_content"
     android:orientation="vertical" >
 
+    <!-- Title Input -->
     <TextView
         android:id="@+id/bet_item_title"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:textSize="17sp"
+        android:textSize="@dimen/bet_feed_item_title_font_size"
         android:paddingTop="5dp"
         android:paddingBottom="5dp"
+        android:textStyle="bold"
         android:paddingLeft="?android:attr/expandableListPreferredChildPaddingLeft"
         android:paddingStart="?android:attr/expandableListPreferredChildPaddingLeft"/>
 
+    <!-- Description Input -->
     <TextView
         android:id="@+id/bet_item_description"
         android:layout_width="wrap_content"
@@ -23,6 +26,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
+        <!-- Contender Label -->
         <TextView
             android:id="@+id/bet_item_contender_desc"
             android:layout_width="wrap_content"
@@ -33,6 +37,7 @@
             android:textStyle="bold"
             android:layout_marginBottom="@dimen/bet_item_layout_margin_bot"/>
 
+        <!-- Contender Input -->
         <TextView
             android:id="@+id/bet_item_contender"
             android:layout_width="wrap_content"
@@ -46,6 +51,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
+        <!-- Stake Label -->
         <TextView
             android:id="@+id/bet_item_stake_desc"
             android:layout_width="wrap_content"
@@ -56,6 +62,7 @@
             android:textStyle="bold"
             android:layout_marginBottom="@dimen/bet_item_layout_margin_bot"/>
 
+        <!-- Stake Input -->
         <TextView
             android:id="@+id/bet_item_stake"
             android:layout_width="wrap_content"

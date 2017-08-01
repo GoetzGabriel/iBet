@@ -68,8 +68,8 @@ public class BetFeedActivity extends AppCompatActivity implements BetFeedInterfa
      */
     private void initData() {
         listDataHeader = new ArrayList<>();
-        listDataHeader.add(Constants.IBET_STATUS_PENDING);
-        listDataHeader.add(Constants.IBET_STATUS_ACTIVE);
+        listDataHeader.add(Constants.BET_FEED_HEADER_PENDING);
+        listDataHeader.add(Constants.BET_FEED_HEADER_ACTIVE);
 
         listsDataChild = new HashMap<>();
     }
@@ -105,8 +105,8 @@ public class BetFeedActivity extends AppCompatActivity implements BetFeedInterfa
      * Process the received bet lists for the expandable listview adapter of the bet feed view
      */
     private void setupBetListData() {
-        listsDataChild.put(Constants.IBET_STATUS_PENDING, pendingBetList);
-        listsDataChild.put(Constants.IBET_STATUS_ACTIVE, activeBetList);
+        listsDataChild.put(Constants.BET_FEED_HEADER_PENDING, pendingBetList);
+        listsDataChild.put(Constants.BET_FEED_HEADER_ACTIVE, activeBetList);
     }
 
     private void initView() {
