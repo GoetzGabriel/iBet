@@ -63,7 +63,7 @@ public class ExpandableBetFeedAdapter extends BaseExpandableListAdapter {
         if (convertView == null) {
             LayoutInflater infalInflater = (LayoutInflater) this._context
                     .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            convertView = infalInflater.inflate(R.layout.bet_feed_child_item, null);
+            convertView = infalInflater.inflate(R.layout.bet_feed_item, null);
         }
 
         //Get the textview references
