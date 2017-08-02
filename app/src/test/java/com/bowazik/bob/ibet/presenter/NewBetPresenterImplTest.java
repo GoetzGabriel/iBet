@@ -3,10 +3,12 @@ package com.bowazik.bob.ibet.presenter;
 import android.content.Context;
 
 import com.bowazik.bob.ibet.interfaces.NewBetInterfaces;
+import com.bowazik.bob.ibet.network.CreateBetAsyncTask;
 
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mock;
+import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 
 import static org.mockito.Mockito.mock;
@@ -22,6 +24,7 @@ public class NewBetPresenterImplTest {
 
     private NewBetPresenterImpl newBetPresenter;
     private Context context;
+    private CreateBetAsyncTask createBetAsyncTask = Mockito.mock(CreateBetAsyncTask.class);
 
     @Before
     public void setup() throws Exception{
@@ -29,28 +32,4 @@ public class NewBetPresenterImplTest {
         newBetPresenter = new NewBetPresenterImpl(newBetView, context);
     }
 
-    /**
-    @Test
-    public void checkContenderAndBetIsNotCorrect(){
-        NewBetInterfaces.NewBetView newBetView = mock(NewBetInterfaces.NewBetView.class);
-        NewBetPresenterImpl newBetPresenterImpl = new NewBetPresenterImpl(newBetView, );
-        newBetPresenterImpl.doSubmitBet("", "");
-        verify(newBetView).showErrorMessageForContenderBet();
-    }
-
-    @Test
-    public void checkContenderAndBetIsEmpty(){
-        NewBetView newBetView = mock(NewBetView.class);
-        NewBetPresenterImpl newBetPresenterImpl = new NewBetPresenterImpl(newBetView);
-        newBetPresenterImpl.doSubmitBet(" ", " ");
-        verify(newBetView).showErrorMessageForContenderBet();
-    }
-
-    @Test
-    public void checkContenderAndBetIsCorrect(){
-        NewBetView newBetView = mock(NewBetView.class);
-        NewBetPresenterImpl newBetPresenterImpl = new NewBetPresenterImpl(newBetView);
-        newBetPresenterImpl.doSubmitBet("Example contender", "Example bet");
-        verify(newBetView).showSuccessMessageForContenderBet();
-    }*/
 }
