@@ -7,12 +7,12 @@
     <string name="login_password_hint">Password</string>
     <string name="main_menu_new_bet">New bet</string>
     <string name="main_menu_running_bets">Active bets</string>
-    <string name="main_menu_exit">Exit</string>
+    <string name="main_menu_exit">Log Out</string>
     <string name="title_activity_new_bet">NewBetActivity</string>
     <string name="new_bet_contender_hint">Contender</string>
     <string name="new_bet_desc_hint">Description</string>
     <string name="btn_submit_bet">Submit</string>
-    <string name="new_bet_info">Create a new bet</string>
+    <string name="new_bet_info">Enter the necessary data and click the submit button to create a new bet.</string>
     <string name="empty_feed_message">Currently no active bets.</string>
     <string name="bet_feed_desc">The running bets are listed here</string>
     <string name="bet_item_contender_desc">Contender:</string>
@@ -30,4 +30,11 @@
     <string name="bet_detail_info">Waiting for contender to accept the bet..</string>
     <string name="main_menu_btn_history">History</string>
     <string name="login_username_hint">Username</string>
+    <string name="bet_detail_title_placeholder">Bet title</string>
+    <string name="bet_detail_description_placeholder">Bet description</string>
+    <string name="bet_detail_contender_placeholder">Bet contender</string>
+    <string name="bet_detail_stake_placeholder">15</string>
+    <string name="bet_history_header_text">Bet history</string>
+    <string name="bet_history_text">Bet history</string>
+    <string name="bet_feed_text">Bet Feed</string>
 </resources>

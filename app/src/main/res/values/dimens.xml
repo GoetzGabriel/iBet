@@ -14,4 +14,5 @@
     <dimen name="text_view_font_size">18sp</dimen>
     <dimen name="bet_feed_item_title_font_size">17sp</dimen>
     <dimen name="border_history_width">3dp</dimen>
+    <dimen name="bet_list_history_bot_top">6dp</dimen>
 </resources>

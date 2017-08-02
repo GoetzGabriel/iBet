@@ -1,5 +1,7 @@
 package com.bowazik.bob.ibet.interfaces;
 
+import com.bowazik.bob.ibet.data.iBet;
+
 /**
  * The interfaces for the bet detail activity/view, presenter and model
  */
@@ -21,7 +23,7 @@ public interface BetDetailInterfaces {
      */
     interface BetDetailPresenter{
 
-        void reactToBet(int betId, String newStatus);
+        void reactToBet(iBet activeBet, String newStatus, int userId);
     }
 
     /**

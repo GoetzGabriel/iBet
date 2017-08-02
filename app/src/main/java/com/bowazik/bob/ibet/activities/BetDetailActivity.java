@@ -97,13 +97,13 @@ public class BetDetailActivity extends AppCompatActivity implements BetDetailInt
             acceptBtn.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    betDetailPresenter.reactToBet(activeIbet.getId(), Constants.IBET_BET_REACTION_WON);
+                    betDetailPresenter.reactToBet(activeIbet, Constants.IBET_BET_REACTION_WON, ibetSharedPrefs.getUserId());
                 }
             });
             declineBtn.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    betDetailPresenter.reactToBet(activeIbet.getId(), Constants.IBET_BET_REACTION_LOST);
+                    betDetailPresenter.reactToBet(activeIbet, Constants.IBET_BET_REACTION_LOST, ibetSharedPrefs.getUserId());
                 }
             });
         }else{
@@ -111,13 +111,13 @@ public class BetDetailActivity extends AppCompatActivity implements BetDetailInt
             acceptBtn.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    betDetailPresenter.reactToBet(activeIbet.getId(), Constants.IBET_BET_REACTION_ACCEPT);
+                    betDetailPresenter.reactToBet(activeIbet, Constants.IBET_BET_REACTION_ACCEPT, ibetSharedPrefs.getUserId());
                 }
             });
             declineBtn.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    betDetailPresenter.reactToBet(activeIbet.getId(), Constants.IBET_BET_REACTION_DECLINED);
+                    betDetailPresenter.reactToBet(activeIbet, Constants.IBET_BET_REACTION_DECLINED, ibetSharedPrefs.getUserId());
                 }
             });
         }

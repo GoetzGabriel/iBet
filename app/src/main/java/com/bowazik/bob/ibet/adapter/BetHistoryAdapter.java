@@ -7,6 +7,7 @@ import android.graphics.drawable.GradientDrawable;
 import android.os.Build;
 import android.support.annotation.NonNull;
 import android.support.v4.content.ContextCompat;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -30,11 +31,13 @@ public class BetHistoryAdapter extends ArrayAdapter<iBet> {
 
     private List<iBet> bets;
     private Context context;
+    private int userId;
 
-    public BetHistoryAdapter(Context context, int eventId, List<iBet> bets){
+    public BetHistoryAdapter(Context context, int eventId, List<iBet> bets, int userId){
         super(context, eventId, bets);
         this.bets = bets;
         this.context = context;
+        this.userId = userId;
     }
 
     /**
@@ -56,14 +59,14 @@ public class BetHistoryAdapter extends ArrayAdapter<iBet> {
 
         //If API lvl is > 15 set the border color to won/lost
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
-            if (i.getStatus().equals(Constants.IBET_STATUS_WON)) {
+            if (isBetWon(i)) {
                 v.setBackgroundResource(R.drawable.border_won);
             } else {
                 v.setBackgroundResource(R.drawable.border_lost);
             }
         }else {
             //If API lvl is < 16 set background color of view item to won/lost
-            if (i.getStatus().equals(Constants.IBET_STATUS_WON)) {
+            if (isBetWon(i)) {
                 v.setBackgroundColor(ContextCompat.getColor(context, R.color.bet_history_element_background_won));
             } else {
                 v.setBackgroundColor(ContextCompat.getColor(context, R.color.bet_history_element_background_lost));
@@ -97,5 +100,20 @@ public class BetHistoryAdapter extends ArrayAdapter<iBet> {
 
         return v;
 
+    }
+
+    /**
+     * Check whether a given iBet object is won or lost considering the given userId
+     * A bet is lost if userId equals the creator id and the bet status is lost or
+     * if the user id equals the contender id and the bet status is won
+     * @param bet The bet object to be checked for win or defeat
+     * @return Boolean value indicating if the bet is won or lost
+     */
+    private boolean isBetWon(iBet bet){
+        Log.v(TAG, "creator: "+bet.getCreator());
+        Log.v(TAG, "userId: "+userId);
+        Log.v(TAG, "status: "+bet.getStatus());
+        return bet.getCreator() == userId && bet.getStatus().equals(Constants.IBET_STATUS_WON)
+                || bet.getCreator() != userId && bet.getStatus().equals(Constants.IBET_STATUS_LOST);
     }
 }

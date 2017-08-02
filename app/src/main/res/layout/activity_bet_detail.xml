@@ -15,6 +15,7 @@
         android:id="@+id/bet_detail_title"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
+        android:text="@string/bet_detail_title_placeholder"
         android:textSize="17sp"
         android:textStyle="bold"
         android:paddingTop="5dp"
@@ -24,6 +25,7 @@
 
     <TextView
         android:id="@+id/bet_detail_description"
+        android:text="@string/bet_detail_description_placeholder"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
 
@@ -47,7 +49,8 @@
             android:layout_height="wrap_content"
             android:layout_toRightOf="@id/bet_detail_contender_desc"
             android:layout_toEndOf="@id/bet_detail_contender_desc"
-            android:layout_marginBottom="@dimen/bet_item_layout_margin_bot"/>
+            android:layout_marginBottom="@dimen/bet_item_layout_margin_bot"
+            android:text="@string/bet_detail_contender_placeholder" />
     </RelativeLayout>
 
     <RelativeLayout
@@ -70,7 +73,8 @@
             android:layout_height="wrap_content"
             android:layout_toRightOf="@id/bet_detail_stake_desc"
             android:layout_toEndOf="@id/bet_detail_stake_desc"
-            android:layout_marginBottom="@dimen/bet_item_layout_margin_bot"/>
+            android:layout_marginBottom="@dimen/bet_item_layout_margin_bot"
+            android:text="@string/bet_detail_stake_placeholder"/>
     </RelativeLayout>
 
     <RelativeLayout

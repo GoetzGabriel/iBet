@@ -11,6 +11,7 @@ import com.bowazik.bob.ibet.adapter.BetHistoryAdapter;
 import com.bowazik.bob.ibet.data.iBet;
 import com.bowazik.bob.ibet.interfaces.HistoryInterfaces;
 import com.bowazik.bob.ibet.presenter.HistoryPresenterImpl;
+import com.bowazik.bob.ibet.sharedPrefs.IbetSharedPrefs;
 import com.bowazik.bob.ibet.utility.Constants;
 import com.bowazik.bob.ibet.views.ExpandedListView;
 
@@ -34,11 +35,13 @@ public class HistoryActivity extends AppCompatActivity implements HistoryInterfa
     private ExpandedListView betHistoryListView;
     private BetHistoryAdapter betHistoryAdapter;
     private List<iBet> betHistoryList;
+    private IbetSharedPrefs ibetSharedPrefs;
 
     @Override
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_history);
+        ibetSharedPrefs = new IbetSharedPrefs(this);
 
         initPresenter();
         initView();
@@ -76,7 +79,7 @@ public class HistoryActivity extends AppCompatActivity implements HistoryInterfa
     private void setAdapter() {
         //Create a new adapter for the bet history expandedListView if is does not exist yet
         if(betHistoryAdapter == null){
-            betHistoryAdapter = new BetHistoryAdapter(this, 0, betHistoryList);
+            betHistoryAdapter = new BetHistoryAdapter(this, 0, betHistoryList, ibetSharedPrefs.getUserId());
             betHistoryListView.setAdapter(betHistoryAdapter);
         }else{
             betHistoryAdapter.addAll(betHistoryList);

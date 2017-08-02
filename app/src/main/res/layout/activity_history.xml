@@ -12,9 +12,19 @@
     android:descendantFocusability="blocksDescendants">
 
     <TextView
+        android:id="@+id/bet_history_header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:text="@string/bet_history_header_text"
+        android:textSize="18sp"
+        android:textStyle="bold"/>
+
+    <TextView
         android:id="@+id/no_history_text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_below="@id/bet_history_header"
         android:text="@string/empty_feed_message"
         android:textSize="18sp"/>
 
@@ -34,9 +44,11 @@
         android:layout_height="match_parent"
         android:layout_width="match_parent"
         android:layout_above="@id/history_bet_balance"
-        android:groupIndicator="@android:color/transparent"
+        android:layout_below="@id/bet_history_header"
         android:descendantFocusability="blocksDescendants"
         android:divider="#C0C0C0"
-        android:dividerHeight="1dp"></com.bowazik.bob.ibet.views.ExpandedListView>
+        android:dividerHeight="1dp"
+        android:layout_marginBottom="@dimen/bet_list_history_bot_top"
+        android:layout_marginTop="@dimen/bet_list_history_bot_top"/>
 
 </RelativeLayout>

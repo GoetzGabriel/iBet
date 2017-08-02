@@ -55,8 +55,8 @@ public class Constants {
     public static final String IBET_BTN_SET_LOST = "Set bet as lost";
     public static final String IBET_BTN_SET_WON = "Set bet as won";
 
-    public static final String REGEX_NEW_BET_TITLE = "^[a-zA-Z0-9 ]+$";
-    public static final String REGEX_NEW_BET_DESCRIPTION = "^[a-zA-Z0-9 ]+$";
+    public static final String REGEX_NEW_BET_TITLE = "^[a-zA-Z0-9 .,()/äöüÄÖÜß?!]+$";
+    public static final String REGEX_NEW_BET_DESCRIPTION = "^[a-zA-Z0-9 .,()/äöüÄÖÜß?!]+$";
     public static final String REGEX_NEW_BET_CONTENDER = "^[0-9]+$";
     public static final String REGEX_NEW_BET_VALUE = "^[0-9]+$";
     public static final String REGEX_SIGN_UP = "^[a-zA-Z0-9]+$";
